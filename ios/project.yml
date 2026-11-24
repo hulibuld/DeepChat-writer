@@ -1,6 +1,6 @@
 name: DeepChat
 options:
-  bundleIdPrefix: com.yanchuan
+  bundleIdPrefix: com.deepchat
   deploymentTarget:
     iOS: "16.0"
   createIntermediateGroups: true
@@ -9,6 +9,8 @@ options:
 settings:
   base:
     SWIFT_VERSION: "5.9"
+    # 编译时把本机绝对路径换掉：二进制里不留作者工程目录路径。
+    OTHER_SWIFT_FLAGS: "-file-prefix-map $(SRCROOT)=/"
     ENABLE_USER_SCRIPT_SANDBOXING: "NO"
     CODE_SIGNING_ALLOWED: "NO"
     CODE_SIGNING_REQUIRED: "NO"
@@ -18,18 +20,30 @@ settings:
 targets:
   DeepChatCore:
     type: framework
+    info:
+      path: Config/DeepChatCore-Info.plist
+      properties:
+        CFBundleShortVersionString: "1.2.0"
+        CFBundleVersion: "3"
+        CFBundlePackageType: FMWK
     platform: iOS
     sources:
       - path: Sources/DeepChatCore
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.yanchuan.deepchat.core
+        PRODUCT_BUNDLE_IDENTIFIER: com.deepchat.hulibuld.core
         PRODUCT_NAME: DeepChatCore
         DEFINES_MODULE: "YES"
         SKIP_INSTALL: "YES"
 
   DeepChatUI:
     type: framework
+    info:
+      path: Config/DeepChatUI-Info.plist
+      properties:
+        CFBundleShortVersionString: "1.2.0"
+        CFBundleVersion: "3"
+        CFBundlePackageType: FMWK
     platform: iOS
     sources:
       - path: Sources/DeepChatUI
@@ -38,7 +52,7 @@ targets:
       - sdk: SwiftUI.framework
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.yanchuan.deepchat.ui
+        PRODUCT_BUNDLE_IDENTIFIER: com.deepchat.hulibuld.ui
         PRODUCT_NAME: DeepChatUI
         DEFINES_MODULE: "YES"
         SKIP_INSTALL: "YES"
@@ -58,8 +72,8 @@ targets:
       properties:
         CFBundleDisplayName: DeepChat
         CFBundleName: DeepChat
-        CFBundleShortVersionString: "1.1.0"
-        CFBundleVersion: "2"
+        CFBundleShortVersionString: "1.2.0"
+        CFBundleVersion: "3"
         LSRequiresIPhoneOS: true
         UILaunchScreen:
           UIColorName: ""
@@ -76,12 +90,12 @@ targets:
         ITSAppUsesNonExemptEncryption: false
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.yanchuan.deepchat
+        PRODUCT_BUNDLE_IDENTIFIER: com.deepchat.hulibuld
         PRODUCT_NAME: DeepChat
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         TARGETED_DEVICE_FAMILY: "1,2"
-        MARKETING_VERSION: "1.1.0"
-        CURRENT_PROJECT_VERSION: "2"
+        MARKETING_VERSION: "1.2.0"
+        CURRENT_PROJECT_VERSION: "3"
         GENERATE_INFOPLIST_FILE: "NO"
         IPHONEOS_DEPLOYMENT_TARGET: "16.0"
         LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"

@@ -8,7 +8,7 @@ public final class Store {
 
     private let queue = DispatchQueue(label: "deepchat.store")
     private let folder: URL
-    private let keychainService = "com.yanchuan.writer.ios"
+    private let keychainService = "com.deepchat.hulibuld"
 
     public init(folder: URL? = nil) {
         if let folder {

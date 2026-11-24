@@ -13,14 +13,14 @@ Android 版的 iOS 对应实现：SwiftUI 写的原生客户端，不依赖任�
 
 | 包 | 给谁用 | 怎么装 |
 |---|---|---|
-| `DeepChat-1.1.0-trollstore.ipa` | iOS 14.0b2 – 16.6.1、16.7 RC、17.0 | 已带 `platform-application`，TrollStore 直接吃 |
-| `DeepChat-1.1.0-unsigned.ipa` | iOS 17.0.1 及以上 | 用 SideStore / AltStore / Sideloadly / 爱思自助签名 |
+| `DeepChat-1.2.0-trollstore.ipa` | iOS 14.0b2 – 16.6.1、16.7 RC、17.0 | 已带 `platform-application`，TrollStore 直接吃 |
+| `DeepChat-1.2.0-unsigned.ipa` | iOS 17.0.1 及以上 | 用 SideStore / AltStore / Sideloadly / 爱思自助签名 |
 
 下载地址在官网页面（`#ios` 区块），校验值：
 
 ```
-trollstore  1,393,728 字节  25de5ed507c7ed5d211d67c0a2a2c9073067a4132833cfd9cbda88f5cbc91b19
-unsigned    1,352,117 字节  7b773040678f953468c82cd3aefa35ef188bfb20e28cc8a6ed535c7cf2a1c5e3
+trollstore  1,423,100 字节  e3c6e7873f5e4c5a308244f258c1548300e1011c94b550a3a67995f5be8e2146
+unsigned    1,381,608 字节  a6f5092c3f60cace148f47eb7307bed6b3818dfd918fc020d232c2b09f66405d
 ```
 
 ## 二、自己出包
@@ -126,14 +126,21 @@ Xcode 版本：26.3 是最后一个支持 macOS 15 Sequoia 的版本，装 26.4 
 - 请求直连你配置的接口，本应用不经过任何中转服务器，也不上报任何统计。
 - 卸载会连同本地数据一起删除，重要稿子先导出 Markdown。
 
-## 六、安全相关的实现
+## 六、兑换与设备登记
+
+- 首次激活需要联网：客户端先离线验签凭证，再向 `https://deepchat-writer.pages.dev/bind` 登记本机设备号，服务端确认这枚码还没绑过别的机器才放行。
+- 服务端只认发行清单里的码（`valid:<码的 SHA-256>`），不认识的码直接拒绝，避免有人抢先把别人的码绑到自己设备上。
+- 登记成功后设备可**全程离线**使用；启动路径没有任何联网调用。只有「从无到有激活」或「重新粘码」才联网。
+- 换机需按新设备号换签：服务端返回 `DEVICE_MISMATCH` 并给出已绑定设备号的掩码。
+
+## 七、安全相关的实现
 
 - 凭证离线验签，客户端只有 P-256 公钥，没有任何签发能力。
 - 会话、设置、凭证、附件四类落盘文件都加了 `FileProtectionType.complete`：锁屏状态下读不到。
 - `Guard` 做越狱与调试的只读判定（常见越狱路径、`cydia://`、沙盒外可写、注入库、`P_TRACED`），**只判断不退出**，不影响正常用户。这是提高门槛，不是防破解。
 - 聊天请求直连你填的地址，不经过任何中转。API Key 只进 Keychain，界面显示首尾各四位。
 
-## 七、已知限制（实话）
+## 八、已知限制（实话）
 
 - **附件不进请求体**：真实多模态需要把报文改成 content 数组，这一版没做，附件只作本地存档。
 - **导入只搬会话与消息**：附件、记忆、角色卡不跟着迁。

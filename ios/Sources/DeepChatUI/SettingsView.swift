@@ -6,6 +6,7 @@ public struct SettingsView: View {
     @State private var keyInput = ""
     @State private var testResult = ""
     @State private var testing = false
+    @State private var showingTerms = false
 
     public init(model: AppModel) { self.model = model }
 
@@ -95,8 +96,15 @@ public struct SettingsView: View {
                         .foregroundStyle(model.licenseActive ? Theme.ok : Theme.danger)
                 }
 
+                section("使用须知与免责声明") {
+                    Text("项目性质、担保与责任限制、合规使用三段。首次启动时已确认同意。")
+                        .font(.system(size: 11.5))
+                        .foregroundStyle(Theme.faint)
+                    GhostButton("查看全文") { showingTerms = true }
+                }
+
                 section("关于") {
-                    Text("DeepChat iOS · 1.0.0")
+                    Text("DeepChat iOS · 1.2.0")
                         .font(.system(size: 13))
                         .foregroundStyle(Theme.dim)
                     Text("侧载安装，不上架 App Store。对话与历史只在本机，请求直连你配置的接口。")
@@ -109,6 +117,7 @@ public struct SettingsView: View {
         .background(Theme.bg)
         .onChange(of: model.settings.temperature) { _ in model.saveSettings() }
         .onChange(of: model.settings.maxTokens) { _ in model.saveSettings() }
+        .sheet(isPresented: $showingTerms) { TermsView() }
     }
 
     private func section<Content: View>(_ title: String, @ViewBuilder content: () -> Content) -> some View {

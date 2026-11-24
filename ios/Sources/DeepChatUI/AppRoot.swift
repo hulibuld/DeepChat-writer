@@ -1,4 +1,5 @@
 import SwiftUI
+import Foundation
 import DeepChatCore
 
 /// 应用根视图。App target 里写：
@@ -11,13 +12,22 @@ public struct AppRootView: View {
 
     @StateObject private var model = AppModel()
     @State private var gateChecked = false
+    @State private var termsAgreed = UserDefaults.standard.bool(forKey: TermsView.agreedKey)
 
     public init() {}
 
     public var body: some View {
         ZStack {
             Theme.bg.ignoresSafeArea()
-            if !gateChecked {
+            if !termsAgreed {
+                // 首次启动先过使用须知：同意才往下走，不同意就退出。
+                TermsView(onAgree: {
+                    UserDefaults.standard.set(true, forKey: TermsView.agreedKey)
+                    termsAgreed = true
+                }, onDecline: {
+                    terminate()
+                })
+            } else if !gateChecked {
                 ProgressView().tint(Theme.dim)
                     .task {
                         model.bootstrap()
@@ -30,6 +40,11 @@ public struct AppRootView: View {
             }
         }
         .preferredColorScheme(.dark)
+    }
+
+    /// 「不同意」= 退出应用。侧载/未上架场景下 `exit(0)` 是唯一可靠的退出方式。
+    private func terminate() {
+        exit(0)
     }
 }
 
@@ -96,6 +111,7 @@ public final class AppModel: ObservableObject {
     @Published public var errorText: String?
     @Published public var deviceId = ""
     @Published public var apiKeyMasked = "未配置"
+    @Published public var activating = false
 
     private let store = Store.shared
     private var task: Task<Void, Never>?
@@ -140,17 +156,30 @@ public final class AppModel: ObservableObject {
         }
     }
 
-    public func activate(_ input: String) {
+    /// 从无到有激活 / 重新粘码：验签通过后先向服务端登记设备，登记成功才落盘。
+    /// `bootstrap()` 里没有网络请求——已激活的设备启动时完全离线。
+    public func activate(_ input: String) async {
         let trimmed = input.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else {
             licenseMessage = "先粘贴兑换码"
             return
         }
         switch LicenseVerifier.evaluate(trimmed, currentDevice: deviceId) {
-        case .active:
-            store.saveLicenseEnvelope(trimmed)
-            licenseActive = true
-            licenseMessage = "兑换成功，已激活"
+        case let .active(claims):
+            activating = true
+            defer { activating = false }
+            switch await LicenseVerifier.bind(code: claims.code, deviceId: deviceId) {
+            case .first, .known:
+                store.saveLicenseEnvelope(trimmed)
+                licenseActive = true
+                licenseMessage = "兑换成功，已激活"
+            case let .mismatch(bound):
+                licenseMessage = "这枚码已经绑在另一台设备上（\(bound)）。换机请联系作者换签。"
+            case let .rejected(reason):
+                licenseMessage = reason
+            case .offline:
+                licenseMessage = "首次激活需要联网。连上网再点一次，激活后可以离线使用。"
+            }
         case let .expired(claims):
             licenseMessage = "该凭证已于 \(dateString(claims.expiresAt)) 过期"
         case let .wrongDevice(bound):

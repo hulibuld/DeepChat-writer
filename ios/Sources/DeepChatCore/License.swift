@@ -103,6 +103,63 @@ public enum LicenseVerifier {
         UUID().uuidString.lowercased()
     }
 
+    // MARK: - 首激活设备登记
+
+    /// 服务端（Cloudflare Pages Functions）只回答一件事：这枚码是不是第一次用在这台机器上。
+    /// 唯一联网点，集中在这里；离线可用不受影响——只在激活/重新粘码时调用。
+    public static let bindEndpoint = URL(string: "https://deepchat-writer.pages.dev/bind")!
+
+    public enum BindOutcome: Equatable {
+        /// 首次绑定，放行。
+        case first
+        /// 同一台机器再次绑定，放行。
+        case known(count: Int)
+        /// 409 DEVICE_MISMATCH：这枚码已经绑在别的机器上，必须拦。
+        case mismatch(bound: String)
+        /// 400：码或设备号本身不合法（与「没网」分开提示，否则用户会一直重试）。
+        case rejected(String)
+        /// 网络失败或服务端异常，不保存凭证。
+        case offline(String)
+    }
+
+    /// POST /bind：`{"code":"…","deviceId":"…"}`，8 秒超时。
+    public static func bind(code: String, deviceId: String) async -> BindOutcome {
+        var request = URLRequest(url: bindEndpoint)
+        request.httpMethod = "POST"
+        request.timeoutInterval = 8
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        let body: [String: String] = ["code": code, "deviceId": deviceId]
+        guard let payload = try? JSONSerialization.data(withJSONObject: body) else {
+            return .offline("请求构造失败")
+        }
+        request.httpBody = payload
+
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let http = response as? HTTPURLResponse else { return .offline("响应异常") }
+            let obj = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+            switch http.statusCode {
+            case 200, 201:
+                guard (obj["ok"] as? Bool) == true else { return .offline("服务端未确认") }
+                if (obj["first"] as? Bool) == true { return .first }
+                return .known(count: (obj["count"] as? NSNumber)?.intValue ?? 0)
+            case 409:
+                guard (obj["error"] as? String) == "DEVICE_MISMATCH" else {
+                    return .offline("服务端拒绝登记（409）")
+                }
+                let bound = (obj["bound"] as? String) ?? ""
+                return .mismatch(bound: bound.isEmpty ? "未知设备" : bound)
+            case 400:
+                return .rejected("兑换码无效，请核对后重试，或联系作者")
+            default:
+                return .offline("服务端返回 \(http.statusCode)")
+            }
+        } catch {
+            return .offline(error.localizedDescription)
+        }
+    }
+
     // MARK: - helpers
 
     static func base64URLDecode(_ s: String) -> Data? {

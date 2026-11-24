@@ -6,13 +6,13 @@ DeepChat是一款面向小说作者与长期连载写作者的写作客户端：
 
 | 平台 | 语言与框架 | 包 | 文档 |
 |---|---|---|---|
-| Android | Kotlin + Jetpack Compose | `DeepChat-Writer-1.2.12.apk` | 本文 |
-| iOS | Swift + SwiftUI（无第三方依赖） | `DeepChat-1.1.0-unsigned.ipa` / `-trollstore.ipa`（1.29 MB / 1.33 MB） | [README-iOS.md](README-iOS.md) |
+| Android | Kotlin + Jetpack Compose | `DeepChat-Writer-1.4.0.apk` | 本文 |
+| iOS | Swift + SwiftUI（无第三方依赖） | `DeepChat-1.2.0-unsigned.ipa` / `-trollstore.ipa`（1.32 MB / 1.36 MB） | [README-iOS.md](README-iOS.md) |
 
-- Android 包名：`com.yanchuan.writer`
-- Android 当前版本：**1.2.13**（versionCode 30）
+- Android 包名：`com.DeepChat.hulibuld`
+- Android 当前版本：**1.4.0**（versionCode 32）
 - Android 最低系统：Android 8.0（API 26）· 目标 Android 14（API 34）
-- iOS Bundle ID：`com.yanchuan.deepchat` · 版本 **1.1.0**（Build 2）· 最低 iOS 16
+- iOS Bundle ID：`com.deepchat.hulibuld` · 版本 **1.2.0**（Build 3）· 最低 iOS 16
 
 ---
 
@@ -145,9 +145,12 @@ cd ios
 
 | 版本 | 要点 |
 |---|---|
+| 1.4.0 | 语音输入（系统识别，不上传音频）、字号四档、浅色主题、思考内容自动折叠；应用名改为 DeepChat |
+| iOS 1.2.0 | 包名与 Keychain service 改为 `com.deepchat.hulibuld`；首激活联网登记设备（`/bind`）；新增使用须知页（首次启动拦截 + 设置常驻入口） |
 | iOS 1.1.0 | 补酒馆模式与世界书、图片与文件附件、JSON 会话导入；本地文件加系统级加密保护；加越狱与调试只读判定 |
 | iOS 1.0.0 | iOS 首版：对话四模式、写作五动作、会话库、角色卡、记忆、用量、导出、多通道、朗读、兑换码与 Android 同源 |
-| 1.2.13 | 当前发布版：凭证加密失败不再回落明文、读取路径关掉明文直通（含一次性迁移）、服务端地址只认 https、关掉明文传输、删掉从未生效的每日限额 |
+| 1.3.0 | 包名改为 `com.DeepChat.hulibuld`；首激活联网登记设备；新增使用须知页。老版本与本版是两个不同的应用，需卸载重装并按新设备号换签 |
+| 1.2.13 |凭证加密失败不再回落明文、读取路径关掉明文直通（含一次性迁移）、服务端地址只认 https、关掉明文传输、删掉从未生效的每日限额 |
 | 1.2.12 | 授权凭证设备校验统一走 deviceMatches() |
 | 1.2.10 | 激活流程与导入去重稳定性修复 |
 | 1.2.9 | 发布流程调整 |
@@ -155,6 +158,12 @@ cd ios
 | 1.2.5 | 一键导入与自动导入落地 |
 | 1.2.4 | 思考过程翻译落库、原文/译文切换 |
 | 1.1.3 | 双写作模式、通道管理、记忆库、用量计费首个完整版 |
+
+---
+
+## 使用须知与免责声明
+
+本项目是第三方客户端，与 DeepSeek、OpenAI 等无隶属关系；聊天走你自己的 API Key，不经过中转服务器；兑换码是对开发工作的自愿赞助。完整条款见 [DISCLAIMER.md](DISCLAIMER.md)。
 
 ---
 

@@ -8,7 +8,7 @@ import DeepChatCore
 /// 界面只显示掩码。`Store` 的全局 Key 按 `api-key` 单独存放，两条互不覆盖。
 public enum ProviderKeychain {
 
-    private static let service = "com.yanchuan.writer.ios"
+    private static let service = "com.deepchat.hulibuld"
 
     public static func account(_ id: UUID) -> String { "provider-key-\(id.uuidString)" }
 

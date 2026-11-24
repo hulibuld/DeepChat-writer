@@ -42,8 +42,8 @@ public struct LicenseView: View {
                             .textInputAutocapitalization(.never)
                             #endif
 
-                        PrimaryButton("验证 / 兑换") {
-                            model.activate(code)
+                        PrimaryButton(model.activating ? "联网登记中…" : "验证 / 兑换") {
+                            Task { await model.activate(code) }
                         }
 
                         if !model.licenseMessage.isEmpty {
