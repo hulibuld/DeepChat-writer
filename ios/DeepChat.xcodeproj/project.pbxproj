@@ -1,0 +1,689 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B5C2A05801946F1141885A5 /* Prompts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C552AD88980DB1462603C1 /* Prompts.swift */; };
+		121D716D0628DF0281BDF85E /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44879336CAAB2253EA122D9 /* DataView.swift */; };
+		14C3D16E7E680B2C6D964686 /* MemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0FFADD654B98FBF725A75C /* MemoryView.swift */; };
+		18DB2767BFB3347E0F9E22DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98740EE861AB91149FF4102D /* Assets.xcassets */; };
+		1C41FD950D42515B8712D750 /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF03D7FEE4D70AF60131F1C9 /* LicenseView.swift */; };
+		312C856484FCDC45DC24BFD4 /* Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5BCB257C01A30608ACA6D2 /* Usage.swift */; };
+		3EF35C9F3B7E5FDBC5824505 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399495A6A8FD1C226F74A774 /* Api.swift */; };
+		42509CBD31BE5AF9DB7D4AC1 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152FFF2DB012D24328390E7 /* ChatView.swift */; };
+		47C7F9E9932C4226949C97D1 /* DeepChatCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32ACB02A9F68C634A4559FB /* DeepChatCore.framework */; };
+		4DE04CE5551DD18ACAE787B7 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82157A146D821B069B1FF550 /* SwiftUI.framework */; };
+		626C9E872E9BC3E80B608F24 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8925FD9D3E2C26A329BDC3 /* Memory.swift */; };
+		652DDFED3641CB9182B8C2AB /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB67568693D04E7078718ACD /* Store.swift */; };
+		689935C7362A9EEA295EC963 /* DeepChatCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E32ACB02A9F68C634A4559FB /* DeepChatCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6904123A70A1A910F7DCD425 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF474EA4FA6026F7D51D4C7 /* SettingsView.swift */; };
+		6D20BCB5E0120BB23B1AF68A /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C4C15BE655E9E56035A24A /* License.swift */; };
+		7037225D2A6ECCF3D49FFC42 /* ProvidersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A637A373038A4D1F1E518A1 /* ProvidersView.swift */; };
+		774C0F521A0A73B39163EA45 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F84E6C06318A8B453B60E7 /* Theme.swift */; };
+		873DDB785B74E236779307F5 /* DeepChatUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF84E908FE45C40C9C3A314 /* DeepChatUI.framework */; };
+		8A78F7A67CA563FCF14553D8 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20CB6CFA174E9058145F3E3 /* LibraryView.swift */; };
+		A64E5B0951F0A7E25880471B /* DeepChatCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32ACB02A9F68C634A4559FB /* DeepChatCore.framework */; };
+		A9934196BBDABE7D9E27D897 /* AppRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F50D0FDE314CF9887FC637 /* AppRoot.swift */; };
+		AE0ABF052337CB0CA847A7FC /* PersonaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF27F04E8BE768C9032738 /* PersonaView.swift */; };
+		BB018DBFDC4765BF0ECB98A8 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C14EC10DFE8BCD0B885589 /* MoreView.swift */; };
+		BF2B1F00533E238735F42723 /* ReadAloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61140756AB648C4FB529BBA /* ReadAloud.swift */; };
+		CD4ACFE109B43696444787B1 /* Persona.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70B5CB90E3DCC867F48C9FE /* Persona.swift */; };
+		D483753B7DB2871524D3AF82 /* DeepChatUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF84E908FE45C40C9C3A314 /* DeepChatUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DB34BB97B69DD660492F789C /* DeepChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CE712750ED77D1F21B9C57 /* DeepChatApp.swift */; };
+		DCB08A68E94110E64AFB5D6E /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD22D04A3BFA526985E7EC2 /* WriteView.swift */; };
+		E75B798F88AC5B48E91AD044 /* UsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D669509CFFA37D308488FD /* UsageView.swift */; };
+		EFA3405E5D0EA391BDA00EE2 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2254EB8F685872CE05CDCB /* Models.swift */; };
+		F294A10D995CB5EEDD6486DB /* Exporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930089171D336E5368E9A153 /* Exporter.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		184BE9C5104B1CB42D57C448 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BFB0C71DCE3D88FCFA4408F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2EA11EFF4832816611E12F95;
+			remoteInfo = DeepChatUI;
+		};
+		A2362F23170D09034534EA96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BFB0C71DCE3D88FCFA4408F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4C456464400EC534E836172;
+			remoteInfo = DeepChatCore;
+		};
+		EBF186B13FED41E1D7680DC7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BFB0C71DCE3D88FCFA4408F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4C456464400EC534E836172;
+			remoteInfo = DeepChatCore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FA4771145659764320519A73 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D483753B7DB2871524D3AF82 /* DeepChatUI.framework in Embed Frameworks */,
+				689935C7362A9EEA295EC963 /* DeepChatCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		03F50D0FDE314CF9887FC637 /* AppRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoot.swift; sourceTree = "<group>"; };
+		0F88D6B84697C3BC75AE659C /* DeepChat.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DeepChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17C14EC10DFE8BCD0B885589 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
+		1C0FFADD654B98FBF725A75C /* MemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryView.swift; sourceTree = "<group>"; };
+		24F84E6C06318A8B453B60E7 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		3152FFF2DB012D24328390E7 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		399495A6A8FD1C226F74A774 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		3A637A373038A4D1F1E518A1 /* ProvidersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidersView.swift; sourceTree = "<group>"; };
+		3C5BCB257C01A30608ACA6D2 /* Usage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usage.swift; sourceTree = "<group>"; };
+		3D2254EB8F685872CE05CDCB /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		3FD22D04A3BFA526985E7EC2 /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
+		46FF27F04E8BE768C9032738 /* PersonaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonaView.swift; sourceTree = "<group>"; };
+		54CE712750ED77D1F21B9C57 /* DeepChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepChatApp.swift; sourceTree = "<group>"; };
+		56C4C15BE655E9E56035A24A /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		6CF84E908FE45C40C9C3A314 /* DeepChatUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DeepChatUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82157A146D821B069B1FF550 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		930089171D336E5368E9A153 /* Exporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exporter.swift; sourceTree = "<group>"; };
+		98740EE861AB91149FF4102D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B44879336CAAB2253EA122D9 /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
+		C20CB6CFA174E9058145F3E3 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		D70B5CB90E3DCC867F48C9FE /* Persona.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persona.swift; sourceTree = "<group>"; };
+		D7C552AD88980DB1462603C1 /* Prompts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompts.swift; sourceTree = "<group>"; };
+		D9D669509CFFA37D308488FD /* UsageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageView.swift; sourceTree = "<group>"; };
+		DB67568693D04E7078718ACD /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		DF03D7FEE4D70AF60131F1C9 /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
+		E32ACB02A9F68C634A4559FB /* DeepChatCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DeepChatCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED8925FD9D3E2C26A329BDC3 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
+		F61140756AB648C4FB529BBA /* ReadAloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadAloud.swift; sourceTree = "<group>"; };
+		FAF474EA4FA6026F7D51D4C7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1971018F02375FE514065E1F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A64E5B0951F0A7E25880471B /* DeepChatCore.framework in Frameworks */,
+				4DE04CE5551DD18ACAE787B7 /* SwiftUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E4A7966119399E0152861AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				873DDB785B74E236779307F5 /* DeepChatUI.framework in Frameworks */,
+				47C7F9E9932C4226949C97D1 /* DeepChatCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1E6B7D1169B57C932E1C4311 /* DeepChatCore */ = {
+			isa = PBXGroup;
+			children = (
+				399495A6A8FD1C226F74A774 /* Api.swift */,
+				930089171D336E5368E9A153 /* Exporter.swift */,
+				56C4C15BE655E9E56035A24A /* License.swift */,
+				ED8925FD9D3E2C26A329BDC3 /* Memory.swift */,
+				3D2254EB8F685872CE05CDCB /* Models.swift */,
+				D70B5CB90E3DCC867F48C9FE /* Persona.swift */,
+				D7C552AD88980DB1462603C1 /* Prompts.swift */,
+				DB67568693D04E7078718ACD /* Store.swift */,
+				3C5BCB257C01A30608ACA6D2 /* Usage.swift */,
+			);
+			path = DeepChatCore;
+			sourceTree = "<group>";
+		};
+		781DBDAE52570441171AEFAB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				82157A146D821B069B1FF550 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA82F18E5C496D3E19676A0F = {
+			isa = PBXGroup;
+			children = (
+				B5DE750CF28A559C0F7B38B7 /* App */,
+				F9FDA4CBAFEEB52E039535B0 /* Sources */,
+				781DBDAE52570441171AEFAB /* Frameworks */,
+				E901CAE2C05A4257DB2F586B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AD5AB98B7E0D54A7657467F4 /* DeepChatUI */ = {
+			isa = PBXGroup;
+			children = (
+				03F50D0FDE314CF9887FC637 /* AppRoot.swift */,
+				3152FFF2DB012D24328390E7 /* ChatView.swift */,
+				B44879336CAAB2253EA122D9 /* DataView.swift */,
+				C20CB6CFA174E9058145F3E3 /* LibraryView.swift */,
+				DF03D7FEE4D70AF60131F1C9 /* LicenseView.swift */,
+				1C0FFADD654B98FBF725A75C /* MemoryView.swift */,
+				17C14EC10DFE8BCD0B885589 /* MoreView.swift */,
+				46FF27F04E8BE768C9032738 /* PersonaView.swift */,
+				3A637A373038A4D1F1E518A1 /* ProvidersView.swift */,
+				F61140756AB648C4FB529BBA /* ReadAloud.swift */,
+				FAF474EA4FA6026F7D51D4C7 /* SettingsView.swift */,
+				24F84E6C06318A8B453B60E7 /* Theme.swift */,
+				D9D669509CFFA37D308488FD /* UsageView.swift */,
+				3FD22D04A3BFA526985E7EC2 /* WriteView.swift */,
+			);
+			path = DeepChatUI;
+			sourceTree = "<group>";
+		};
+		B5DE750CF28A559C0F7B38B7 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				98740EE861AB91149FF4102D /* Assets.xcassets */,
+				54CE712750ED77D1F21B9C57 /* DeepChatApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E901CAE2C05A4257DB2F586B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0F88D6B84697C3BC75AE659C /* DeepChat.app */,
+				E32ACB02A9F68C634A4559FB /* DeepChatCore.framework */,
+				6CF84E908FE45C40C9C3A314 /* DeepChatUI.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F9FDA4CBAFEEB52E039535B0 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1E6B7D1169B57C932E1C4311 /* DeepChatCore */,
+				AD5AB98B7E0D54A7657467F4 /* DeepChatUI */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0E52AAE62F8D5BB7E2AEF5F9 /* DeepChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3A57B2E9E4D223FBE222C68 /* Build configuration list for PBXNativeTarget "DeepChat" */;
+			buildPhases = (
+				808FF979645A1BD405F3AC6C /* Sources */,
+				AE278E258DE37B29401DCFA0 /* Resources */,
+				6E4A7966119399E0152861AD /* Frameworks */,
+				FA4771145659764320519A73 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9E7F9FA9D9C38359CB74BBDB /* PBXTargetDependency */,
+				87C97F9635A895EA162723EC /* PBXTargetDependency */,
+			);
+			name = DeepChat;
+			packageProductDependencies = (
+			);
+			productName = DeepChat;
+			productReference = 0F88D6B84697C3BC75AE659C /* DeepChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2EA11EFF4832816611E12F95 /* DeepChatUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0AD6B0DE79F7BCF894853F7 /* Build configuration list for PBXNativeTarget "DeepChatUI" */;
+			buildPhases = (
+				3DA1590F28C783B926C88F1B /* Sources */,
+				1971018F02375FE514065E1F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A96D5F6E6C6FB3BCA9220D9D /* PBXTargetDependency */,
+			);
+			name = DeepChatUI;
+			packageProductDependencies = (
+			);
+			productName = DeepChatUI;
+			productReference = 6CF84E908FE45C40C9C3A314 /* DeepChatUI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B4C456464400EC534E836172 /* DeepChatCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4038171415B7E5592CB5B167 /* Build configuration list for PBXNativeTarget "DeepChatCore" */;
+			buildPhases = (
+				F8115D25BAA79B165C8F06A1 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DeepChatCore;
+			packageProductDependencies = (
+			);
+			productName = DeepChatCore;
+			productReference = E32ACB02A9F68C634A4559FB /* DeepChatCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7BFB0C71DCE3D88FCFA4408F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = CF5F97FA95446A7F5EDCCC6E /* Build configuration list for PBXProject "DeepChat" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = AA82F18E5C496D3E19676A0F;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E901CAE2C05A4257DB2F586B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B4C456464400EC534E836172 /* DeepChatCore */,
+				2EA11EFF4832816611E12F95 /* DeepChatUI */,
+				0E52AAE62F8D5BB7E2AEF5F9 /* DeepChat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE278E258DE37B29401DCFA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18DB2767BFB3347E0F9E22DF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3DA1590F28C783B926C88F1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9934196BBDABE7D9E27D897 /* AppRoot.swift in Sources */,
+				42509CBD31BE5AF9DB7D4AC1 /* ChatView.swift in Sources */,
+				121D716D0628DF0281BDF85E /* DataView.swift in Sources */,
+				8A78F7A67CA563FCF14553D8 /* LibraryView.swift in Sources */,
+				1C41FD950D42515B8712D750 /* LicenseView.swift in Sources */,
+				14C3D16E7E680B2C6D964686 /* MemoryView.swift in Sources */,
+				BB018DBFDC4765BF0ECB98A8 /* MoreView.swift in Sources */,
+				AE0ABF052337CB0CA847A7FC /* PersonaView.swift in Sources */,
+				7037225D2A6ECCF3D49FFC42 /* ProvidersView.swift in Sources */,
+				BF2B1F00533E238735F42723 /* ReadAloud.swift in Sources */,
+				6904123A70A1A910F7DCD425 /* SettingsView.swift in Sources */,
+				774C0F521A0A73B39163EA45 /* Theme.swift in Sources */,
+				E75B798F88AC5B48E91AD044 /* UsageView.swift in Sources */,
+				DCB08A68E94110E64AFB5D6E /* WriteView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		808FF979645A1BD405F3AC6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB34BB97B69DD660492F789C /* DeepChatApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8115D25BAA79B165C8F06A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EF35C9F3B7E5FDBC5824505 /* Api.swift in Sources */,
+				F294A10D995CB5EEDD6486DB /* Exporter.swift in Sources */,
+				6D20BCB5E0120BB23B1AF68A /* License.swift in Sources */,
+				626C9E872E9BC3E80B608F24 /* Memory.swift in Sources */,
+				EFA3405E5D0EA391BDA00EE2 /* Models.swift in Sources */,
+				CD4ACFE109B43696444787B1 /* Persona.swift in Sources */,
+				0B5C2A05801946F1141885A5 /* Prompts.swift in Sources */,
+				652DDFED3641CB9182B8C2AB /* Store.swift in Sources */,
+				312C856484FCDC45DC24BFD4 /* Usage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		87C97F9635A895EA162723EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4C456464400EC534E836172 /* DeepChatCore */;
+			targetProxy = A2362F23170D09034534EA96 /* PBXContainerItemProxy */;
+		};
+		9E7F9FA9D9C38359CB74BBDB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2EA11EFF4832816611E12F95 /* DeepChatUI */;
+			targetProxy = 184BE9C5104B1CB42D57C448 /* PBXContainerItemProxy */;
+		};
+		A96D5F6E6C6FB3BCA9220D9D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4C456464400EC534E836172 /* DeepChatCore */;
+			targetProxy = EBF186B13FED41E1D7680DC7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0AD34575122EF72510941022 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yanchuan.deepchat;
+				PRODUCT_NAME = DeepChat;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		52CBE52BFE7C570EEBA243ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yanchuan.deepchat.core;
+				PRODUCT_NAME = DeepChatCore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		6AEEBECFB2B658DE84938295 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yanchuan.deepchat.ui;
+				PRODUCT_NAME = DeepChatUI;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		BD650195942922BA043D87E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		BF48DD711D6B8F5C66BC2F46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yanchuan.deepchat.ui;
+				PRODUCT_NAME = DeepChatUI;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		CBD8A08F4CB78BFE2E461B0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yanchuan.deepchat.core;
+				PRODUCT_NAME = DeepChatCore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		D8CBE3ED58C9A10FA1E317A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yanchuan.deepchat;
+				PRODUCT_NAME = DeepChat;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D8DC53AD2A13B16530BF829A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4038171415B7E5592CB5B167 /* Build configuration list for PBXNativeTarget "DeepChatCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52CBE52BFE7C570EEBA243ED /* Debug */,
+				CBD8A08F4CB78BFE2E461B0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B3A57B2E9E4D223FBE222C68 /* Build configuration list for PBXNativeTarget "DeepChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0AD34575122EF72510941022 /* Debug */,
+				D8CBE3ED58C9A10FA1E317A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C0AD6B0DE79F7BCF894853F7 /* Build configuration list for PBXNativeTarget "DeepChatUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF48DD711D6B8F5C66BC2F46 /* Debug */,
+				6AEEBECFB2B658DE84938295 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CF5F97FA95446A7F5EDCCC6E /* Build configuration list for PBXProject "DeepChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD650195942922BA043D87E1 /* Debug */,
+				D8DC53AD2A13B16530BF829A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7BFB0C71DCE3D88FCFA4408F /* Project object */;
+}

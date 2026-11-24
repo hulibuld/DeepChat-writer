@@ -96,6 +96,10 @@ public struct ChatView: View {
                     .font(.system(size: 15))
                     .foregroundStyle(msg.role == .user ? Theme.ink : Theme.ink)
                     .textSelection(.enabled)
+                if msg.role == .assistant && !msg.text.isEmpty {
+                    ReadAloudButton(text: msg.text, tint: Theme.faint)
+                        .padding(.top, 2)
+                }
             }
             .padding(.horizontal, 14)
             .padding(.vertical, 11)

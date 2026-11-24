@@ -1,11 +1,18 @@
-# DeepChat · Android 客户端
+# DeepChat · Android + iOS 客户端
 
-DeepChat是一款面向小说作者与长期连载写作者的 Android 写作客户端：把「日常写作」和「角色扮演式推演（酒馆模式）」放在同一个应用里，配合长期记忆、会话导入、思考过程翻译与用量计费，让灵感、设定、旧稿都留在本机、随手可续。
+DeepChat是一款面向小说作者与长期连载写作者的写作客户端：把「日常写作」和「角色扮演式推演（酒馆模式）」放在同一个应用里，配合长期记忆、会话导入、思考过程翻译与用量计费，让灵感、设定、旧稿都留在本机、随手可续。
 
-- 包名：`com.yanchuan.writer`
-- 当前版本：**1.2.12**（versionCode 29）
-- 最低系统：Android 8.0（API 26）
-- 目标系统：Android 14（API 34）
+两个平台各自原生实现，共用同一套兑换码与同一把验签公钥：
+
+| 平台 | 语言与框架 | 包 | 文档 |
+|---|---|---|---|
+| Android | Kotlin + Jetpack Compose | `DeepChat-Writer-1.2.12.apk` | 本文 |
+| iOS | Swift + SwiftUI（无第三方依赖） | `DeepChat-1.0.0-unsigned.ipa` / `-trollstore.ipa`（1.03 MB / 1.06 MB） | [README-iOS.md](README-iOS.md) |
+
+- Android 包名：`com.yanchuan.writer`
+- Android 当前版本：**1.2.12**（versionCode 29）
+- Android 最低系统：Android 8.0（API 26）· 目标 Android 14（API 34）
+- iOS Bundle ID：`com.yanchuan.deepchat` · 版本 **1.0.0**（Build 1）· 最低 iOS 16
 
 ---
 
@@ -120,10 +127,25 @@ printf 'sdk.dir=%s\n' "$ANDROID_HOME" > local.properties
 
 ---
 
+## iOS 构建
+
+iOS 版是独立的 SwiftUI 工程，源码在 [`ios/`](ios/)，没有第三方依赖。需要 Xcode（免费，装完提供 iOS SDK）与 xcodegen：
+
+```bash
+brew install xcodegen
+cd ios
+./build-ipa.sh          # 产出 dist/DeepChat-<版本>-unsigned.ipa 与 -trollstore.ipa
+```
+
+`build-ipa.sh` 做四件事：`xcodegen generate` 生成工程、`xcodebuild` 出 arm64 Release 包、压成通用未签名 `.ipa`、再用 ad-hoc 签名加 `platform-application` 出 TrollStore 专用包。逐条安装步骤见 [README-iOS.md](README-iOS.md)。
+
+---
+
 ## 版本记录
 
 | 版本 | 要点 |
 |---|---|
+| iOS 1.0.0 | iOS 首版：对话四模式、写作五动作、会话库、角色卡、记忆、用量、导出、多通道、朗读、兑换码与 Android 同源。未做：酒馆模式、世界书、附件、JSON 导入 |
 | 1.2.12 | 当前发布版：授权凭证设备校验统一走 deviceMatches() |
 | 1.2.10 | 激活流程与导入去重稳定性修复 |
 | 1.2.9 | 发布流程调整 |

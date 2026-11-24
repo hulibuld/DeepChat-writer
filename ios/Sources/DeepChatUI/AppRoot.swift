@@ -44,6 +44,10 @@ public struct MainTabView: View {
                 case 0: ChatView(model: model)
                 case 1: WriteView(model: model)
                 case 2: LibraryView(model: model)
+                case 3: MoreView(sessions: model.sessions) { provider in
+                    model.settings.provider = provider
+                    model.saveSettings()
+                }
                 default: SettingsView(model: model)
                 }
             }
@@ -53,7 +57,8 @@ public struct MainTabView: View {
                 tabButton(0, "对话", "bubble.left.and.bubble.right")
                 tabButton(1, "写作", "text.alignleft")
                 tabButton(2, "会话", "folder")
-                tabButton(3, "设置", "slider.horizontal.3")
+                tabButton(3, "资料", "square.grid.2x2")
+                tabButton(4, "设置", "slider.horizontal.3")
             }
             .padding(.top, 8)
             .padding(.bottom, 4)
@@ -106,6 +111,7 @@ public final class AppModel: ObservableObject {
         sessions = store.loadSessions()
         if sessions.isEmpty { sessions = [Session()] }
         settings = store.loadSettings()
+        settings = ProviderStore.shared.settingsApplyingCurrent(settings)
         deviceId = store.deviceId()
         apiKeyMasked = store.maskedAPIKey()
         refreshLicense()
@@ -207,7 +213,7 @@ public final class AppModel: ObservableObject {
             guard let self else { return }
             let client = ApiClient(settings: self.settings, apiKey: apiKey)
             do {
-                _ = try await client.stream(messages: history, mode: mode) { piece in
+                let reply = try await client.stream(messages: history, mode: mode) { piece in
                     Task { @MainActor [weak self] in
                         guard let self else { return }
                         var s = self.current
@@ -217,6 +223,13 @@ public final class AppModel: ObservableObject {
                     }
                 }
                 await MainActor.run {
+                    UsageStore.shared.record(
+                        sessionId: session.id,
+                        model: self.settings.provider.model,
+                        providerName: self.settings.provider.name,
+                        history: history,
+                        reply: reply
+                    )
                     self.isStreaming = false
                     self.persist()
                 }
