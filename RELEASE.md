@@ -1,27 +1,27 @@
-# 发布说明 · 1.2.9
+# 发布说明 · 1.2.10
 
 当前发布版本信息，下载前请核对文件名与哈希。
 
 | 项目 | 值 |
 |---|---|
-| 版本号 | **1.2.9** |
-| versionCode | 26 |
+| 版本号 | **1.2.10** |
+| versionCode | 27 |
 | 包名 | `com.yanchuan.writer` |
-| APK 文件名 | `deepchat-writer-1.2.9.apk` |
-| 文件大小 | 6,162,395 字节 |
-| SHA-256 | `659a37c9c9350a564bb22ca274af33039cbdaaee7658bf376909fe20ab2f610e` |
+| APK 文件名 | `deepchat-writer-1.2.10.apk` |
+| 文件大小 | 6,162,471 字节 |
+| SHA-256 | `03a9e488584e78c587130b8f62cd672c5495ff5bdb2d507736d04bf14ba46bb3` |
 | 最低系统 | Android 8.0（API 26） |
 
 ## 下载
 
-<https://deepchat-writer.pages.dev/deepchat-writer-1.2.9.apk>
+<https://deepchat-writer.pages.dev/deepchat-writer-1.2.10.apk>
 
 下载后请自行校验哈希（macOS / Linux）：
 
 ```bash
-shasum -a 256 deepchat-writer-1.2.9.apk
+shasum -a 256 deepchat-writer-1.2.10.apk
 # 期望输出
-# 659a37c9c9350a564bb22ca274af33039cbdaaee7658bf376909fe20ab2f610e
+# 03a9e488584e78c587130b8f62cd672c5495ff5bdb2d507736d04bf14ba46bb3
 ```
 
 结果与上表不一致，说明文件在传输过程中被改动或来源不是官方下载地址，请勿安装。
@@ -32,9 +32,9 @@ shasum -a 256 deepchat-writer-1.2.9.apk
 - 抖音：`_I36_567I_5193_`
 - 拿到兑换码后在应用内「激活」页输入即可；激活状态离线保存在本机，换机后重新输入同一枚兑换码即可恢复。
 
-### 为什么收费
+### 收费说明
 
-为什么收费：为了提升互联网大众的付费意识，希望大家摒弃白嫖思想。1 元一枚，一码一设备。所有收入捐给贫困儿童教育事业，6 个月后公开收入与捐赠记录。
+收费旨在培养互联网用户的付费意识，倡导摒弃无偿获取的观念。1 元一枚，一码一设备。所有收入捐给贫困儿童教育事业，6 个月后公开收入与捐赠记录。
 
 ## 本版要点
 
