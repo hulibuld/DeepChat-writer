@@ -27,6 +27,10 @@ public final class ApiClient {
     private let apiKey: String
     private let session: URLSession
 
+    /// 本次请求用的 system 提示词。nil 表示按写作模式取默认那句。
+    /// 角色卡、记忆、酒馆设定都从这里注进来，不各自拼报文。
+    public var systemOverride: String?
+
     public init(settings: AppSettings, apiKey: String, session: URLSession = .shared) {
         self.settings = settings
         self.apiKey = apiKey
@@ -42,7 +46,8 @@ public final class ApiClient {
     }
 
     private func body(messages: [Message], stream: Bool, mode: WritingMode) throws -> Data {
-        var arr: [[String: String]] = [["role": "system", "content": Prompts.system(for: mode)]]
+        let systemText = systemOverride ?? Prompts.system(for: mode)
+        var arr: [[String: String]] = [["role": "system", "content": systemText]]
         for m in messages where m.role != .system {
             arr.append(["role": m.role.rawValue, "content": m.text])
         }

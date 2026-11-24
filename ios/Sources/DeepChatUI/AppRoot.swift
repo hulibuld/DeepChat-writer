@@ -44,7 +44,7 @@ public struct MainTabView: View {
                 case 0: ChatView(model: model)
                 case 1: WriteView(model: model)
                 case 2: LibraryView(model: model)
-                case 3: MoreView(sessions: model.sessions) { provider in
+                case 3: MoreView(model: model) { provider in
                     model.settings.provider = provider
                     model.saveSettings()
                 }
@@ -185,7 +185,16 @@ public final class AppModel: ObservableObject {
 
     public func persist() { store.saveSessions(sessions) }
 
-    public func send(_ text: String) {
+    /// 酒馆页交过来的一次性设定块。发一条就清掉，避免下一轮还在起效。
+    @Published public var pendingSystem: String = ""
+
+    /// 酒馆页发起剧情：先记设定，再走普通发送。
+    public func beginTavern(system: String, user: String) {
+        pendingSystem = system
+        send(user)
+    }
+
+    public func send(_ text: String, attachments: [Attachment] = []) {
         guard licenseActive else {
             errorText = "授权未通过，请先兑换"
             return
@@ -199,7 +208,7 @@ public final class AppModel: ObservableObject {
         guard !trimmed.isEmpty else { return }
 
         var session = current
-        session.messages.append(Message(role: .user, text: trimmed))
+        session.messages.append(Message(role: .user, text: trimmed, attachments: attachments))
         session.retitleFromFirstMessage()
         session.messages.append(Message(role: .assistant, text: ""))
         sessions[currentIndex] = session
@@ -212,6 +221,13 @@ public final class AppModel: ObservableObject {
         task = Task { [weak self] in
             guard let self else { return }
             let client = ApiClient(settings: self.settings, apiKey: apiKey)
+            // 三层设定按「模式默认 → 角色卡 → 记忆」叠加，酒馆块放最前（它最具体）。
+            var system = PersonaStore().systemPrompt(basedOn: Prompts.system(for: mode))
+            system = MemoryStore().systemPrompt(basedOn: system)
+            if !self.pendingSystem.isEmpty {
+                system = self.pendingSystem + "\n\n" + system
+            }
+            client.systemOverride = system.isEmpty ? nil : system
             do {
                 let reply = try await client.stream(messages: history, mode: mode) { piece in
                     Task { @MainActor [weak self] in
@@ -230,6 +246,7 @@ public final class AppModel: ObservableObject {
                         history: history,
                         reply: reply
                     )
+                    self.pendingSystem = ""
                     self.isStreaming = false
                     self.persist()
                 }

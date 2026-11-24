@@ -7,12 +7,12 @@ DeepChat是一款面向小说作者与长期连载写作者的写作客户端：
 | 平台 | 语言与框架 | 包 | 文档 |
 |---|---|---|---|
 | Android | Kotlin + Jetpack Compose | `DeepChat-Writer-1.2.12.apk` | 本文 |
-| iOS | Swift + SwiftUI（无第三方依赖） | `DeepChat-1.0.0-unsigned.ipa` / `-trollstore.ipa`（1.03 MB / 1.06 MB） | [README-iOS.md](README-iOS.md) |
+| iOS | Swift + SwiftUI（无第三方依赖） | `DeepChat-1.1.0-unsigned.ipa` / `-trollstore.ipa`（1.29 MB / 1.33 MB） | [README-iOS.md](README-iOS.md) |
 
 - Android 包名：`com.yanchuan.writer`
-- Android 当前版本：**1.2.12**（versionCode 29）
+- Android 当前版本：**1.2.13**（versionCode 30）
 - Android 最低系统：Android 8.0（API 26）· 目标 Android 14（API 34）
-- iOS Bundle ID：`com.yanchuan.deepchat` · 版本 **1.0.0**（Build 1）· 最低 iOS 16
+- iOS Bundle ID：`com.yanchuan.deepchat` · 版本 **1.1.0**（Build 2）· 最低 iOS 16
 
 ---
 
@@ -145,8 +145,10 @@ cd ios
 
 | 版本 | 要点 |
 |---|---|
-| iOS 1.0.0 | iOS 首版：对话四模式、写作五动作、会话库、角色卡、记忆、用量、导出、多通道、朗读、兑换码与 Android 同源。未做：酒馆模式、世界书、附件、JSON 导入 |
-| 1.2.12 | 当前发布版：授权凭证设备校验统一走 deviceMatches() |
+| iOS 1.1.0 | 补酒馆模式与世界书、图片与文件附件、JSON 会话导入；本地文件加系统级加密保护；加越狱与调试只读判定 |
+| iOS 1.0.0 | iOS 首版：对话四模式、写作五动作、会话库、角色卡、记忆、用量、导出、多通道、朗读、兑换码与 Android 同源 |
+| 1.2.13 | 当前发布版：凭证加密失败不再回落明文、读取路径关掉明文直通（含一次性迁移）、服务端地址只认 https、关掉明文传输、删掉从未生效的每日限额 |
+| 1.2.12 | 授权凭证设备校验统一走 deviceMatches() |
 | 1.2.10 | 激活流程与导入去重稳定性修复 |
 | 1.2.9 | 发布流程调整 |
 | 1.2.8 | 独立下载站与发布说明上线 |

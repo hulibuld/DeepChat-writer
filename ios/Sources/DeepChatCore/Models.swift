@@ -12,13 +12,45 @@ public struct Message: Codable, Identifiable, Sendable, Equatable {
     public var text: String
     public var createdAt: Date
     public var reasoning: String?
+    /// 本地附件（图片 / 文件存档）。老版本 sessions.json 里没有这个字段，解码时补空数组。
+    public var attachments: [Attachment]
 
-    public init(id: UUID = UUID(), role: Role, text: String, createdAt: Date = Date(), reasoning: String? = nil) {
+    public init(id: UUID = UUID(), role: Role, text: String, createdAt: Date = Date(),
+                reasoning: String? = nil, attachments: [Attachment] = []) {
         self.id = id
         self.role = role
         self.text = text
         self.createdAt = createdAt
         self.reasoning = reasoning
+        self.attachments = attachments
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case id, role, text, createdAt, reasoning, attachments
+    }
+
+    /// 手写解码：`decodeIfPresent` 兜住缺字段与老格式，旧 sessions.json 不会因为少
+    /// `attachments` 而整库读不出来。字段缺了就按默认值补，不抛错。
+    public init(from decoder: Decoder) throws {
+        let box = try decoder.container(keyedBy: CodingKeys.self)
+        id = try box.decodeIfPresent(UUID.self, forKey: .id) ?? UUID()
+        role = try box.decodeIfPresent(Role.self, forKey: .role) ?? .user
+        text = try box.decodeIfPresent(String.self, forKey: .text) ?? ""
+        createdAt = try box.decodeIfPresent(Date.self, forKey: .createdAt) ?? Date()
+        reasoning = try box.decodeIfPresent(String.self, forKey: .reasoning)
+        attachments = try box.decodeIfPresent([Attachment].self, forKey: .attachments) ?? []
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var box = encoder.container(keyedBy: CodingKeys.self)
+        try box.encode(id, forKey: .id)
+        try box.encode(role, forKey: .role)
+        try box.encode(text, forKey: .text)
+        try box.encode(createdAt, forKey: .createdAt)
+        try box.encodeIfPresent(reasoning, forKey: .reasoning)
+        if !attachments.isEmpty {
+            try box.encode(attachments, forKey: .attachments)
+        }
     }
 }
 

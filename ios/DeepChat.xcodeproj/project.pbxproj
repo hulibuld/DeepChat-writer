@@ -8,15 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		0B5C2A05801946F1141885A5 /* Prompts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C552AD88980DB1462603C1 /* Prompts.swift */; };
+		10CA05D611E867CA4B947E0C /* Guard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B79781071404E992A8D98A0 /* Guard.swift */; };
 		121D716D0628DF0281BDF85E /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44879336CAAB2253EA122D9 /* DataView.swift */; };
 		14C3D16E7E680B2C6D964686 /* MemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0FFADD654B98FBF725A75C /* MemoryView.swift */; };
 		18DB2767BFB3347E0F9E22DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98740EE861AB91149FF4102D /* Assets.xcassets */; };
 		1C41FD950D42515B8712D750 /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF03D7FEE4D70AF60131F1C9 /* LicenseView.swift */; };
 		312C856484FCDC45DC24BFD4 /* Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5BCB257C01A30608ACA6D2 /* Usage.swift */; };
+		324308B267DBC22F0F1E0CF3 /* Attachments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881707B5B714C9975793891E /* Attachments.swift */; };
 		3EF35C9F3B7E5FDBC5824505 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399495A6A8FD1C226F74A774 /* Api.swift */; };
 		42509CBD31BE5AF9DB7D4AC1 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152FFF2DB012D24328390E7 /* ChatView.swift */; };
 		47C7F9E9932C4226949C97D1 /* DeepChatCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32ACB02A9F68C634A4559FB /* DeepChatCore.framework */; };
 		4DE04CE5551DD18ACAE787B7 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82157A146D821B069B1FF550 /* SwiftUI.framework */; };
+		572487F7691C4F7C71E3181E /* Worldbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89A4A535D647B32A610948 /* Worldbook.swift */; };
 		626C9E872E9BC3E80B608F24 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8925FD9D3E2C26A329BDC3 /* Memory.swift */; };
 		652DDFED3641CB9182B8C2AB /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB67568693D04E7078718ACD /* Store.swift */; };
 		689935C7362A9EEA295EC963 /* DeepChatCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E32ACB02A9F68C634A4559FB /* DeepChatCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -24,8 +27,10 @@
 		6D20BCB5E0120BB23B1AF68A /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C4C15BE655E9E56035A24A /* License.swift */; };
 		7037225D2A6ECCF3D49FFC42 /* ProvidersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A637A373038A4D1F1E518A1 /* ProvidersView.swift */; };
 		774C0F521A0A73B39163EA45 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F84E6C06318A8B453B60E7 /* Theme.swift */; };
+		80931562C0C0CE1C5D8EC99B /* AttachmentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F126F4A6D7D0365AE4ABC /* AttachmentPicker.swift */; };
 		873DDB785B74E236779307F5 /* DeepChatUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF84E908FE45C40C9C3A314 /* DeepChatUI.framework */; };
 		8A78F7A67CA563FCF14553D8 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20CB6CFA174E9058145F3E3 /* LibraryView.swift */; };
+		9B545CADB69DB734D67BA3F0 /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0526526FEA7F40A1010A0F /* ImportView.swift */; };
 		A64E5B0951F0A7E25880471B /* DeepChatCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32ACB02A9F68C634A4559FB /* DeepChatCore.framework */; };
 		A9934196BBDABE7D9E27D897 /* AppRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F50D0FDE314CF9887FC637 /* AppRoot.swift */; };
 		AE0ABF052337CB0CA847A7FC /* PersonaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF27F04E8BE768C9032738 /* PersonaView.swift */; };
@@ -33,11 +38,13 @@
 		BF2B1F00533E238735F42723 /* ReadAloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61140756AB648C4FB529BBA /* ReadAloud.swift */; };
 		CD4ACFE109B43696444787B1 /* Persona.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70B5CB90E3DCC867F48C9FE /* Persona.swift */; };
 		D483753B7DB2871524D3AF82 /* DeepChatUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF84E908FE45C40C9C3A314 /* DeepChatUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D8A48C9DA06AD42A6CF4E4B5 /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E71AF660DCF004237E719C /* Importer.swift */; };
 		DB34BB97B69DD660492F789C /* DeepChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CE712750ED77D1F21B9C57 /* DeepChatApp.swift */; };
 		DCB08A68E94110E64AFB5D6E /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD22D04A3BFA526985E7EC2 /* WriteView.swift */; };
 		E75B798F88AC5B48E91AD044 /* UsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D669509CFFA37D308488FD /* UsageView.swift */; };
 		EFA3405E5D0EA391BDA00EE2 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2254EB8F685872CE05CDCB /* Models.swift */; };
 		F294A10D995CB5EEDD6486DB /* Exporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930089171D336E5368E9A153 /* Exporter.swift */; };
+		FB71517BAD8915C1FDCFD76A /* TavernView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5246F2814D5D6342A10494D7 /* TavernView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +92,7 @@
 		17C14EC10DFE8BCD0B885589 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		1C0FFADD654B98FBF725A75C /* MemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryView.swift; sourceTree = "<group>"; };
 		24F84E6C06318A8B453B60E7 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		2B79781071404E992A8D98A0 /* Guard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guard.swift; sourceTree = "<group>"; };
 		3152FFF2DB012D24328390E7 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		399495A6A8FD1C226F74A774 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		3A637A373038A4D1F1E518A1 /* ProvidersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidersView.swift; sourceTree = "<group>"; };
@@ -92,13 +100,18 @@
 		3D2254EB8F685872CE05CDCB /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		3FD22D04A3BFA526985E7EC2 /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		46FF27F04E8BE768C9032738 /* PersonaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonaView.swift; sourceTree = "<group>"; };
+		5246F2814D5D6342A10494D7 /* TavernView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TavernView.swift; sourceTree = "<group>"; };
 		54CE712750ED77D1F21B9C57 /* DeepChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepChatApp.swift; sourceTree = "<group>"; };
 		56C4C15BE655E9E56035A24A /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		58E71AF660DCF004237E719C /* Importer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
+		5B89A4A535D647B32A610948 /* Worldbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worldbook.swift; sourceTree = "<group>"; };
 		6CF84E908FE45C40C9C3A314 /* DeepChatUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DeepChatUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82157A146D821B069B1FF550 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		881707B5B714C9975793891E /* Attachments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments.swift; sourceTree = "<group>"; };
 		930089171D336E5368E9A153 /* Exporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exporter.swift; sourceTree = "<group>"; };
 		98740EE861AB91149FF4102D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B44879336CAAB2253EA122D9 /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
+		BC2F126F4A6D7D0365AE4ABC /* AttachmentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentPicker.swift; sourceTree = "<group>"; };
 		C20CB6CFA174E9058145F3E3 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		D70B5CB90E3DCC867F48C9FE /* Persona.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persona.swift; sourceTree = "<group>"; };
 		D7C552AD88980DB1462603C1 /* Prompts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompts.swift; sourceTree = "<group>"; };
@@ -106,6 +119,7 @@
 		DB67568693D04E7078718ACD /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		DF03D7FEE4D70AF60131F1C9 /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
 		E32ACB02A9F68C634A4559FB /* DeepChatCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DeepChatCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB0526526FEA7F40A1010A0F /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
 		ED8925FD9D3E2C26A329BDC3 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		F61140756AB648C4FB529BBA /* ReadAloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadAloud.swift; sourceTree = "<group>"; };
 		FAF474EA4FA6026F7D51D4C7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -137,7 +151,10 @@
 			isa = PBXGroup;
 			children = (
 				399495A6A8FD1C226F74A774 /* Api.swift */,
+				881707B5B714C9975793891E /* Attachments.swift */,
 				930089171D336E5368E9A153 /* Exporter.swift */,
+				2B79781071404E992A8D98A0 /* Guard.swift */,
+				58E71AF660DCF004237E719C /* Importer.swift */,
 				56C4C15BE655E9E56035A24A /* License.swift */,
 				ED8925FD9D3E2C26A329BDC3 /* Memory.swift */,
 				3D2254EB8F685872CE05CDCB /* Models.swift */,
@@ -145,6 +162,7 @@
 				D7C552AD88980DB1462603C1 /* Prompts.swift */,
 				DB67568693D04E7078718ACD /* Store.swift */,
 				3C5BCB257C01A30608ACA6D2 /* Usage.swift */,
+				5B89A4A535D647B32A610948 /* Worldbook.swift */,
 			);
 			path = DeepChatCore;
 			sourceTree = "<group>";
@@ -171,8 +189,10 @@
 			isa = PBXGroup;
 			children = (
 				03F50D0FDE314CF9887FC637 /* AppRoot.swift */,
+				BC2F126F4A6D7D0365AE4ABC /* AttachmentPicker.swift */,
 				3152FFF2DB012D24328390E7 /* ChatView.swift */,
 				B44879336CAAB2253EA122D9 /* DataView.swift */,
+				EB0526526FEA7F40A1010A0F /* ImportView.swift */,
 				C20CB6CFA174E9058145F3E3 /* LibraryView.swift */,
 				DF03D7FEE4D70AF60131F1C9 /* LicenseView.swift */,
 				1C0FFADD654B98FBF725A75C /* MemoryView.swift */,
@@ -181,6 +201,7 @@
 				3A637A373038A4D1F1E518A1 /* ProvidersView.swift */,
 				F61140756AB648C4FB529BBA /* ReadAloud.swift */,
 				FAF474EA4FA6026F7D51D4C7 /* SettingsView.swift */,
+				5246F2814D5D6342A10494D7 /* TavernView.swift */,
 				24F84E6C06318A8B453B60E7 /* Theme.swift */,
 				D9D669509CFFA37D308488FD /* UsageView.swift */,
 				3FD22D04A3BFA526985E7EC2 /* WriteView.swift */,
@@ -326,8 +347,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9934196BBDABE7D9E27D897 /* AppRoot.swift in Sources */,
+				80931562C0C0CE1C5D8EC99B /* AttachmentPicker.swift in Sources */,
 				42509CBD31BE5AF9DB7D4AC1 /* ChatView.swift in Sources */,
 				121D716D0628DF0281BDF85E /* DataView.swift in Sources */,
+				9B545CADB69DB734D67BA3F0 /* ImportView.swift in Sources */,
 				8A78F7A67CA563FCF14553D8 /* LibraryView.swift in Sources */,
 				1C41FD950D42515B8712D750 /* LicenseView.swift in Sources */,
 				14C3D16E7E680B2C6D964686 /* MemoryView.swift in Sources */,
@@ -336,6 +359,7 @@
 				7037225D2A6ECCF3D49FFC42 /* ProvidersView.swift in Sources */,
 				BF2B1F00533E238735F42723 /* ReadAloud.swift in Sources */,
 				6904123A70A1A910F7DCD425 /* SettingsView.swift in Sources */,
+				FB71517BAD8915C1FDCFD76A /* TavernView.swift in Sources */,
 				774C0F521A0A73B39163EA45 /* Theme.swift in Sources */,
 				E75B798F88AC5B48E91AD044 /* UsageView.swift in Sources */,
 				DCB08A68E94110E64AFB5D6E /* WriteView.swift in Sources */,
@@ -355,7 +379,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EF35C9F3B7E5FDBC5824505 /* Api.swift in Sources */,
+				324308B267DBC22F0F1E0CF3 /* Attachments.swift in Sources */,
 				F294A10D995CB5EEDD6486DB /* Exporter.swift in Sources */,
+				10CA05D611E867CA4B947E0C /* Guard.swift in Sources */,
+				D8A48C9DA06AD42A6CF4E4B5 /* Importer.swift in Sources */,
 				6D20BCB5E0120BB23B1AF68A /* License.swift in Sources */,
 				626C9E872E9BC3E80B608F24 /* Memory.swift in Sources */,
 				EFA3405E5D0EA391BDA00EE2 /* Models.swift in Sources */,
@@ -363,6 +390,7 @@
 				0B5C2A05801946F1141885A5 /* Prompts.swift in Sources */,
 				652DDFED3641CB9182B8C2AB /* Store.swift in Sources */,
 				312C856484FCDC45DC24BFD4 /* Usage.swift in Sources */,
+				572487F7691C4F7C71E3181E /* Worldbook.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,12 +420,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yanchuan.deepchat;
 				PRODUCT_NAME = DeepChat;
 				SDKROOT = iphoneos;
@@ -570,12 +598,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yanchuan.deepchat;
 				PRODUCT_NAME = DeepChat;
 				SDKROOT = iphoneos;

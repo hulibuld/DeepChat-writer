@@ -4,18 +4,30 @@ import DeepChatCore
 /// 「资料」页：把角色卡、记忆、用量、导出、通道这些次级功能收在一处，
 /// 底部保留四个高频 tab，不把主界面挤成六个。
 public struct MoreView: View {
-    let sessions: [Session]
+    @ObservedObject var model: AppModel
     let onSelectProvider: ((Provider) -> Void)?
 
-    public init(sessions: [Session], onSelectProvider: ((Provider) -> Void)? = nil) {
-        self.sessions = sessions
+    public init(model: AppModel, onSelectProvider: ((Provider) -> Void)? = nil) {
+        self.model = model
         self.onSelectProvider = onSelectProvider
     }
+
+    private var sessions: [Session] { model.sessions }
 
     public var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 10) {
+                    entry("酒馆", "选角色卡与世界书，一句开场直接开戏，按设定续写", "wineglass") {
+                        TavernView(
+                            onSend: { system, line in
+                                model.beginTavern(system: system, user: line)
+                            },
+                            onContinue: { prompt in
+                                model.beginTavern(system: "", user: prompt)
+                            }
+                        )
+                    }
                     entry("角色卡", "人设、口癖、不会说的话，选中后写进系统提示词", "theatermasks") {
                         PersonaView()
                     }
@@ -30,6 +42,12 @@ public struct MoreView: View {
                     }
                     entry("通道", "多个接口地址与模型，选中一个作为当前", "point.3.connected.trianglepath.dotted") {
                         ProvidersView(onSelect: onSelectProvider)
+                    }
+                    entry("导入", "从 JSON 导入 Android 端导出的会话，重名或同 id 的自动跳过", "square.and.arrow.down") {
+                        ImportView(existing: model.sessions) { imported in
+                            model.sessions = imported + model.sessions
+                            model.persist()
+                        }
                     }
                 }
                 .padding(16)

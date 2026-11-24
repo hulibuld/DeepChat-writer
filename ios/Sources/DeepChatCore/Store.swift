@@ -19,6 +19,20 @@ public final class Store {
             self.folder = base.appendingPathComponent("DeepChat", isDirectory: true)
         }
         try? FileManager.default.createDirectory(at: self.folder, withIntermediateDirectories: true)
+        protect(self.folder)
+    }
+
+    // MARK: - 文件保护
+
+    /// 锁屏后这些 JSON 读不到：iOS 数据保护 `complete`。macOS 上没有这个 API（会抛错），
+    /// 所以整段用 `#if os(iOS)` 圈起来，host 侧 `swift build` 不受影响。
+    private func protect(_ url: URL) {
+        #if os(iOS)
+        try? FileManager.default.setAttributes(
+            [.protectionKey: FileProtectionType.complete],
+            ofItemAtPath: url.path
+        )
+        #endif
     }
 
     // MARK: - 会话
@@ -39,6 +53,7 @@ public final class Store {
             encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
             guard let data = try? encoder.encode(sessions) else { return }
             try? data.write(to: sessionsURL, options: .atomic)
+            protect(sessionsURL)
         }
     }
 
@@ -55,6 +70,7 @@ public final class Store {
         queue.sync {
             guard let data = try? JSONEncoder().encode(settings) else { return }
             try? data.write(to: settingsURL, options: .atomic)
+            protect(settingsURL)
         }
     }
 
@@ -80,6 +96,7 @@ public final class Store {
             encoder.dateEncodingStrategy = .iso8601
             guard let data = try? encoder.encode(StoredLicense(envelope: envelope, savedAt: Date())) else { return }
             try? data.write(to: licenseURL, options: .atomic)
+            protect(licenseURL)
         }
     }
 

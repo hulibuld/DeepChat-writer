@@ -231,7 +231,8 @@ public struct PersonaView: View {
 
 // MARK: - 编辑器
 
-private struct PersonaEditorView: View {
+/// 角色卡编辑器。给 `PersonaView` 用，也给酒馆页复用（卡片编辑只此一套），故为 public。
+public struct PersonaEditorView: View {
 
     @Environment(\.dismiss) private var dismiss
 
@@ -241,17 +242,17 @@ private struct PersonaEditorView: View {
 
     @State private var draft: PersonaCard
 
-    init(card: PersonaCard,
-         isNew: Bool,
-         onSave: @escaping (PersonaCard) -> Void,
-         onDelete: @escaping (PersonaCard) -> Void) {
+    public init(card: PersonaCard,
+                isNew: Bool,
+                onSave: @escaping (PersonaCard) -> Void,
+                onDelete: @escaping (PersonaCard) -> Void) {
         self.isNew = isNew
         self.onSave = onSave
         self.onDelete = onDelete
         _draft = State(initialValue: card)
     }
 
-    var body: some View {
+    public var body: some View {
         VStack(spacing: 0) {
             HStack {
                 Button("取消") { dismiss() }

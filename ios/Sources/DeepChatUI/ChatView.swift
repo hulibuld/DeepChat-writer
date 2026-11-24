@@ -3,6 +3,7 @@ import DeepChatCore
 
 public struct ChatView: View {
     @ObservedObject var model: AppModel
+    @StateObject private var attachmentDraft = AttachmentDraft()
     @State private var input = ""
 
     public init(model: AppModel) { self.model = model }
@@ -96,6 +97,9 @@ public struct ChatView: View {
                     .font(.system(size: 15))
                     .foregroundStyle(msg.role == .user ? Theme.ink : Theme.ink)
                     .textSelection(.enabled)
+                if !msg.attachments.isEmpty {
+                    AttachmentStrip(attachments: msg.attachments)
+                }
                 if msg.role == .assistant && !msg.text.isEmpty {
                     ReadAloudButton(text: msg.text, tint: Theme.faint)
                         .padding(.top, 2)
@@ -111,6 +115,7 @@ public struct ChatView: View {
 
     private var inputBar: some View {
         VStack(spacing: 8) {
+            AttachmentPicker(draft: attachmentDraft)
             HStack(spacing: 6) {
                 ForEach(WritingMode.allCases, id: \.self) { mode in
                     Button {
@@ -145,8 +150,10 @@ public struct ChatView: View {
 
                 Button {
                     let text = input
+                    let picked = attachmentDraft.items
                     input = ""
-                    model.send(text)
+                    attachmentDraft.clear()
+                    model.send(text, attachments: picked)
                 } label: {
                     Image(systemName: "arrow.up")
                         .font(.system(size: 15, weight: .bold))
@@ -156,7 +163,7 @@ public struct ChatView: View {
                         .clipShape(Circle())
                 }
                 .buttonStyle(.plain)
-                .disabled(input.isEmpty || model.isStreaming)
+                .disabled((input.isEmpty && attachmentDraft.isEmpty) || model.isStreaming)
             }
         }
         .padding(.horizontal, 16)
