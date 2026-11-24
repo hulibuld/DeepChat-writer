@@ -77,7 +77,7 @@ public struct DataView: View {
                     }
                     if !store.errorText.isEmpty {
                         Text(store.errorText)
-                            .font(.system(size: 12.5))
+                            .font(.system(size: Theme.size(12.5)))
                             .foregroundStyle(Theme.danger)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
@@ -93,11 +93,11 @@ public struct DataView: View {
     private var header: some View {
         HStack(alignment: .firstTextBaseline) {
             Text("数据")
-                .font(.system(size: 20, weight: .bold))
+                .font(.system(size: Theme.size(20), weight: .bold))
                 .foregroundStyle(Theme.ink)
             Spacer()
             Text("\(sessions.count) 个会话")
-                .font(.system(size: 11.5))
+                .font(.system(size: Theme.size(11.5)))
                 .foregroundStyle(Theme.faint)
         }
         .padding(.horizontal, 16)
@@ -108,10 +108,10 @@ public struct DataView: View {
     private var overview: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("会话导出")
-                .font(.system(size: 12, weight: .semibold))
+                .font(.system(size: Theme.size(12), weight: .semibold))
                 .foregroundStyle(Theme.faint)
             Text("导出成 Markdown，标题、模式、逐条消息都在，通过系统分享存到「文件」或直接发给别人。")
-                .font(.system(size: 12.5))
+                .font(.system(size: Theme.size(12.5)))
                 .foregroundStyle(Theme.dim)
             PrimaryButton("全部导出（\(sessions.count) 个会话）") {
                 store.prepareAll(sessions)
@@ -132,22 +132,22 @@ public struct DataView: View {
                     .font(.system(size: 13))
                     .foregroundStyle(Theme.accent)
                 Text("已生成")
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: Theme.size(12), weight: .semibold))
                     .foregroundStyle(Theme.faint)
             }
             Text(ready.url.lastPathComponent)
-                .font(.system(size: 12.5, design: .monospaced))
+                .font(.system(size: Theme.size(12.5), design: .monospaced))
                 .foregroundStyle(Theme.ink)
                 .lineLimit(1)
                 .truncationMode(.middle)
             Text("\(ready.title) · \(ready.messageCount) 条消息")
-                .font(.system(size: 11.5))
+                .font(.system(size: Theme.size(11.5)))
                 .foregroundStyle(Theme.faint)
 
             HStack(spacing: 8) {
                 ShareLink(item: ready.url) {
                     Text("系统分享")
-                        .font(.system(size: 14, weight: .semibold))
+                        .font(.system(size: Theme.size(14), weight: .semibold))
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                         .background(Theme.accent)
@@ -169,12 +169,12 @@ public struct DataView: View {
     private var sessionList: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("单个会话")
-                .font(.system(size: 12, weight: .semibold))
+                .font(.system(size: Theme.size(12), weight: .semibold))
                 .foregroundStyle(Theme.faint)
 
             if sessions.isEmpty {
                 Text("还没有会话。")
-                    .font(.system(size: 13))
+                    .font(.system(size: Theme.size(13)))
                     .foregroundStyle(Theme.faint)
             }
 
@@ -182,11 +182,11 @@ public struct DataView: View {
                 HStack(alignment: .center, spacing: 10) {
                     VStack(alignment: .leading, spacing: 3) {
                         Text(session.title)
-                            .font(.system(size: 14.5, weight: .medium))
+                            .font(.system(size: Theme.size(14.5), weight: .medium))
                             .foregroundStyle(Theme.ink)
                             .lineLimit(1)
                         Text("\(session.mode.label) · \(session.messages.count) 条 · \(dateText(session.updatedAt))")
-                            .font(.system(size: 11.5))
+                            .font(.system(size: Theme.size(11.5)))
                             .foregroundStyle(Theme.faint)
                     }
                     Spacer(minLength: 8)
@@ -194,7 +194,7 @@ public struct DataView: View {
                         store.prepare(session)
                     } label: {
                         Text(store.ready?.title == session.title ? "重新导出" : "导出")
-                            .font(.system(size: 13, weight: .medium))
+                            .font(.system(size: Theme.size(13), weight: .medium))
                             .padding(.horizontal, 12)
                             .padding(.vertical, 7)
                             .background(Theme.surface2)
@@ -212,7 +212,7 @@ public struct DataView: View {
 
     private var hint: some View {
         Text("导出文件只写在本机临时目录；分享出去之后要不要留底由你在系统面板里决定。")
-            .font(.system(size: 11.5))
+            .font(.system(size: Theme.size(11.5)))
             .foregroundStyle(Theme.faint)
             .frame(maxWidth: .infinity, alignment: .leading)
     }

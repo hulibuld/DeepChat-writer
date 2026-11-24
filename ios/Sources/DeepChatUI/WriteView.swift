@@ -17,14 +17,14 @@ public struct WriteView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
                 Text("改写")
-                    .font(.system(size: 22, weight: .bold))
+                    .font(.system(size: Theme.size(22), weight: .bold))
                     .foregroundStyle(Theme.ink)
                 Text("贴原段落，选一个动作。只输出改后的段落，不解释。")
-                    .font(.system(size: 13.5))
+                    .font(.system(size: Theme.size(13.5)))
                     .foregroundStyle(Theme.dim)
 
                 TextEditor(text: $draft)
-                    .font(.system(size: 15))
+                    .font(.system(size: Theme.size(15)))
                     .foregroundStyle(Theme.ink)
                     .scrollContentBackground(.hidden)
                     .frame(minHeight: 150)
@@ -34,7 +34,7 @@ public struct WriteView: View {
                     .overlay(alignment: .topLeading) {
                         if draft.isEmpty {
                             Text("在这里贴要改的段落")
-                                .font(.system(size: 14))
+                                .font(.system(size: Theme.size(14)))
                                 .foregroundStyle(Theme.faint)
                                 .padding(.top, 20)
                                 .padding(.leading, 16)
@@ -48,7 +48,7 @@ public struct WriteView: View {
                             run(action)
                         } label: {
                             Text(action.label)
-                                .font(.system(size: 12.5, weight: .medium))
+                                .font(.system(size: Theme.size(12.5), weight: .medium))
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 6)
                                 .background(Theme.surface2)
@@ -63,17 +63,17 @@ public struct WriteView: View {
                 if running {
                     HStack(spacing: 6) {
                         ProgressView().tint(Theme.dim).scaleEffect(0.7)
-                        Text("在改…").font(.system(size: 12)).foregroundStyle(Theme.faint)
+                        Text("在改…").font(.system(size: Theme.size(12))).foregroundStyle(Theme.faint)
                     }
                 }
 
                 if !result.isEmpty {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("改后")
-                            .font(.system(size: 12, weight: .semibold))
+                            .font(.system(size: Theme.size(12), weight: .semibold))
                             .foregroundStyle(Theme.faint)
                         Text(result)
-                            .font(.system(size: 15))
+                            .font(.system(size: Theme.size(15)))
                             .foregroundStyle(Theme.ink)
                             .textSelection(.enabled)
 

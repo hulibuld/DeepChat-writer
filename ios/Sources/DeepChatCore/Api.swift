@@ -90,7 +90,8 @@ public final class ApiClient {
 
     /// 流式：逐个片段回调增量文本。服务端不回 SSE 时自动退回完整响应。
     public func stream(messages: [Message], mode: WritingMode,
-                       onDelta: @escaping @Sendable (String) -> Void) async throws -> String {
+                       onDelta: @escaping @Sendable (String) -> Void,
+                       onReasoning: (@Sendable (String) -> Void)? = nil) async throws -> String {
         let (bytes, response) = try await session.bytes(for: try request(messages: messages, stream: true, mode: mode))
         guard let http = response as? HTTPURLResponse else { throw ApiError.decoding("no response") }
         guard (200..<300).contains(http.statusCode) else {
@@ -110,6 +111,7 @@ public final class ApiClient {
                let choices = root["choices"] as? [[String: Any]],
                let message = choices.first?["message"] as? [String: Any],
                let content = message["content"] as? String {
+                if let r = ApiClient.reasoningText(of: message), let onReasoning { onReasoning(r) }
                 onDelta(content)
                 return content
             }
@@ -124,6 +126,7 @@ public final class ApiClient {
                   let root = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                   let choices = root["choices"] as? [[String: Any]],
                   let delta = choices.first?["delta"] as? [String: Any] else { continue }
+            if let r = ApiClient.reasoningText(of: delta), let onReasoning { onReasoning(r) }
             if let piece = delta["content"] as? String, !piece.isEmpty {
                 full += piece
                 onDelta(piece)
@@ -131,6 +134,13 @@ public final class ApiClient {
         }
         if full.isEmpty { throw ApiError.decoding("流式返回为空") }
         return full
+    }
+
+    /// 思考内容增量：兼容 `reasoning_content`（DeepSeek / 通义等）与 `reasoning` 两种字段名。
+    static func reasoningText(of dict: [String: Any]) -> String? {
+        let raw = (dict["reasoning_content"] as? String) ?? (dict["reasoning"] as? String)
+        guard let raw, !raw.isEmpty else { return nil }
+        return raw
     }
 
     /// 列表模型，用于「测通」按钮。

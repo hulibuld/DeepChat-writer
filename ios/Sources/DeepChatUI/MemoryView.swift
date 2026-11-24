@@ -33,14 +33,14 @@ public struct MemoryView: View {
                         filter = item
                     } label: {
                         Text(item.label)
-                            .font(.system(size: 13.5, weight: filter == item ? .semibold : .regular))
+                            .font(.system(size: Theme.size(13.5), weight: filter == item ? .semibold : .regular))
                             .foregroundStyle(filter == item ? Theme.ink : Theme.faint)
                     }
                     .buttonStyle(.plain)
                 }
                 Spacer()
                 Text("\(store.activeLines().count) / \(store.items.count) 条启用")
-                    .font(.system(size: 11.5))
+                    .font(.system(size: Theme.size(11.5)))
                     .foregroundStyle(Theme.faint)
             }
             .padding(.horizontal, 16)
@@ -56,7 +56,7 @@ public struct MemoryView: View {
                         Text(store.items.isEmpty
                              ? "还没有记忆。点右上角「添加」写一条，例如「主角性格：沉默，不爱解释」。"
                              : "没有启用中的条目。")
-                            .font(.system(size: 12.5))
+                            .font(.system(size: Theme.size(12.5)))
                             .foregroundStyle(Theme.dim)
                             .fixedSize(horizontal: false, vertical: true)
                             .padding(.vertical, 8)
@@ -97,7 +97,7 @@ public struct MemoryView: View {
     private var header: some View {
         HStack {
             Text("记忆")
-                .font(.system(size: 20, weight: .bold))
+                .font(.system(size: Theme.size(20), weight: .bold))
                 .foregroundStyle(Theme.ink)
             Spacer()
             Button {
@@ -107,7 +107,7 @@ public struct MemoryView: View {
                     Image(systemName: "plus")
                         .font(.system(size: 13, weight: .semibold))
                     Text("添加")
-                        .font(.system(size: 14, weight: .medium))
+                        .font(.system(size: Theme.size(14), weight: .medium))
                 }
                 .foregroundStyle(Theme.accent)
             }
@@ -125,11 +125,11 @@ public struct MemoryView: View {
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: 8) {
                     Text(item.title.isEmpty ? "未命名" : item.title)
-                        .font(.system(size: 14.5, weight: .medium))
+                        .font(.system(size: Theme.size(14.5), weight: .medium))
                         .foregroundStyle(item.enabled ? Theme.ink : Theme.dim)
                         .lineLimit(1)
                     Text(item.kind.label)
-                        .font(.system(size: 10))
+                        .font(.system(size: Theme.size(10)))
                         .foregroundStyle(Theme.accent)
                         .padding(.horizontal, 6)
                         .padding(.vertical, 2)
@@ -138,7 +138,7 @@ public struct MemoryView: View {
                 }
                 if !item.content.isEmpty {
                     Text(item.content)
-                        .font(.system(size: 12.5))
+                        .font(.system(size: Theme.size(12.5)))
                         .foregroundStyle(item.enabled ? Theme.dim : Theme.faint)
                         .lineLimit(3)
                         .fixedSize(horizontal: false, vertical: true)
@@ -167,13 +167,13 @@ public struct MemoryView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Text("拼进提示词的记忆")
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: Theme.size(12), weight: .semibold))
                     .foregroundStyle(Theme.faint)
                 Spacer()
                 Button(promptVisible ? "收起" : "预览") {
                     promptVisible.toggle()
                 }
-                .font(.system(size: 12.5, weight: .medium))
+                .font(.system(size: Theme.size(12.5), weight: .medium))
                 .foregroundStyle(Theme.accent)
                 .buttonStyle(.plain)
             }
@@ -181,7 +181,7 @@ public struct MemoryView: View {
             if promptVisible {
                 let block = store.promptBlock()
                 Text(block.isEmpty ? "没有启用的条目，系统提示词不会被追加内容。" : block)
-                    .font(.system(size: 11.5, design: .monospaced))
+                    .font(.system(size: Theme.size(11.5), design: .monospaced))
                     .foregroundStyle(Theme.dim)
                     .textSelection(.enabled)
                     .fixedSize(horizontal: false, vertical: true)
@@ -221,12 +221,12 @@ private struct MemoryEditorView: View {
         VStack(spacing: 0) {
             HStack {
                 Button("取消") { dismiss() }
-                    .font(.system(size: 14))
+                    .font(.system(size: Theme.size(14)))
                     .foregroundStyle(Theme.dim)
                     .buttonStyle(.plain)
                 Spacer()
                 Text(isNew ? "新建记忆" : "编辑记忆")
-                    .font(.system(size: 15, weight: .semibold))
+                    .font(.system(size: Theme.size(15), weight: .semibold))
                     .foregroundStyle(Theme.ink)
                 Spacer()
                 Button("保存") {
@@ -236,7 +236,7 @@ private struct MemoryEditorView: View {
                     onSave(draft)
                     dismiss()
                 }
-                .font(.system(size: 14, weight: .semibold))
+                .font(.system(size: Theme.size(14), weight: .semibold))
                 .foregroundStyle(Theme.accent)
                 .buttonStyle(.plain)
             }
@@ -248,10 +248,10 @@ private struct MemoryEditorView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     VStack(alignment: .leading, spacing: 5) {
                         Text("标题 / 键")
-                            .font(.system(size: 11.5))
+                            .font(.system(size: Theme.size(11.5)))
                             .foregroundStyle(Theme.faint)
                         TextField("例如：主角性格", text: $draft.title)
-                            .font(.system(size: 14))
+                            .font(.system(size: Theme.size(14)))
                             .foregroundStyle(Theme.ink)
                             .padding(10)
                             .background(Theme.surface2)
@@ -260,19 +260,19 @@ private struct MemoryEditorView: View {
 
                     VStack(alignment: .leading, spacing: 5) {
                         Text("内容")
-                            .font(.system(size: 11.5))
+                            .font(.system(size: Theme.size(11.5)))
                             .foregroundStyle(Theme.faint)
                         ZStack(alignment: .topLeading) {
                             if draft.content.isEmpty {
                                 Text("一句话或一小段，例如：沉默寡言，遇事先看窗外")
-                                    .font(.system(size: 13))
+                                    .font(.system(size: Theme.size(13)))
                                     .foregroundStyle(Theme.faint)
                                     .padding(.horizontal, 13)
                                     .padding(.vertical, 12)
                                     .allowsHitTesting(false)
                             }
                             TextEditor(text: $draft.content)
-                                .font(.system(size: 14))
+                                .font(.system(size: Theme.size(14)))
                                 .foregroundColor(Theme.ink)
                                 .scrollContentBackground(.hidden)
                                 .padding(6)
@@ -284,7 +284,7 @@ private struct MemoryEditorView: View {
 
                     VStack(alignment: .leading, spacing: 5) {
                         Text("类型")
-                            .font(.system(size: 11.5))
+                            .font(.system(size: Theme.size(11.5)))
                             .foregroundStyle(Theme.faint)
                         Picker("", selection: $draft.kind) {
                             ForEach(MemoryKind.allCases, id: \.self) { kind in
@@ -298,7 +298,7 @@ private struct MemoryEditorView: View {
 
                     Toggle(isOn: $draft.enabled) {
                         Text("启用（拼进系统提示词）")
-                            .font(.system(size: 13))
+                            .font(.system(size: Theme.size(13)))
                             .foregroundStyle(Theme.dim)
                     }
                     .tint(Theme.accent)
@@ -309,7 +309,7 @@ private struct MemoryEditorView: View {
                             dismiss()
                         } label: {
                             Text("删除这条")
-                                .font(.system(size: 13.5, weight: .medium))
+                                .font(.system(size: Theme.size(13.5), weight: .medium))
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 12)
                                 .foregroundStyle(Theme.danger)

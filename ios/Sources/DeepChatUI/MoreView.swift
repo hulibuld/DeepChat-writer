@@ -74,10 +74,10 @@ public struct MoreView: View {
                     .frame(width: 28)
                 VStack(alignment: .leading, spacing: 3) {
                     Text(title)
-                        .font(.system(size: 15, weight: .semibold))
+                        .font(.system(size: Theme.size(15), weight: .semibold))
                         .foregroundStyle(Theme.ink)
                     Text(subtitle)
-                        .font(.system(size: 12))
+                        .font(.system(size: Theme.size(12)))
                         .foregroundStyle(Theme.faint)
                         .multilineTextAlignment(.leading)
                 }

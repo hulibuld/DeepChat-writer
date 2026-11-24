@@ -13,6 +13,7 @@ public struct AppRootView: View {
     @StateObject private var model = AppModel()
     @State private var gateChecked = false
     @State private var termsAgreed = UserDefaults.standard.bool(forKey: TermsView.agreedKey)
+    @AppStorage(Appearance.storageKey) private var appearanceRaw = Appearance.system.rawValue
 
     public init() {}
 
@@ -39,7 +40,8 @@ public struct AppRootView: View {
                 LicenseView(model: model)
             }
         }
-        .preferredColorScheme(.dark)
+        // 深色 / 浅色 / 跟随系统：三档映射到 preferredColorScheme，色板跟着环境走。
+        .preferredColorScheme(Appearance(rawValue: appearanceRaw)?.colorScheme)
     }
 
     /// 「不同意」= 退出应用。侧载/未上架场景下 `exit(0)` 是唯一可靠的退出方式。
@@ -88,7 +90,7 @@ public struct MainTabView: View {
             VStack(spacing: 3) {
                 Image(systemName: icon)
                     .font(.system(size: 17, weight: .medium))
-                Text(title).font(.system(size: 10.5, weight: .medium))
+                Text(title).font(.system(size: Theme.size(10.5), weight: .medium))
             }
             .frame(maxWidth: .infinity)
             .foregroundStyle(tab == index ? Theme.accent : Theme.faint)
@@ -112,6 +114,8 @@ public final class AppModel: ObservableObject {
     @Published public var deviceId = ""
     @Published public var apiKeyMasked = "未配置"
     @Published public var activating = false
+    /// 界面偏好（字号 / 外观 / 折叠）改动后 +1，所有观察 model 的页面立即重绘。
+    @Published public var uiRevision = 0
 
     private let store = Store.shared
     private var task: Task<Void, Never>?
@@ -122,6 +126,8 @@ public final class AppModel: ObservableObject {
         if sessions.isEmpty { sessions = [Session()] }
         return sessions[min(currentIndex, sessions.count - 1)]
     }
+
+    public func bumpUI() { uiRevision &+= 1 }
 
     public func bootstrap() {
         sessions = store.loadSessions()
@@ -258,15 +264,29 @@ public final class AppModel: ObservableObject {
             }
             client.systemOverride = system.isEmpty ? nil : system
             do {
-                let reply = try await client.stream(messages: history, mode: mode) { piece in
-                    Task { @MainActor [weak self] in
-                        guard let self else { return }
-                        var s = self.current
-                        guard let last = s.messages.last, last.role == .assistant else { return }
-                        s.messages[s.messages.count - 1].text += piece
-                        self.sessions[self.currentIndex] = s
+                let reply = try await client.stream(
+                    messages: history,
+                    mode: mode,
+                    onDelta: { piece in
+                        Task { @MainActor [weak self] in
+                            guard let self else { return }
+                            var s = self.current
+                            guard let last = s.messages.last, last.role == .assistant else { return }
+                            s.messages[s.messages.count - 1].text += piece
+                            self.sessions[self.currentIndex] = s
+                        }
+                    },
+                    onReasoning: { piece in
+                        Task { @MainActor [weak self] in
+                            guard let self else { return }
+                            var s = self.current
+                            guard let last = s.messages.last, last.role == .assistant else { return }
+                            let existing = s.messages[s.messages.count - 1].reasoning ?? ""
+                            s.messages[s.messages.count - 1].reasoning = existing + piece
+                            self.sessions[self.currentIndex] = s
+                        }
                     }
-                }
+                )
                 await MainActor.run {
                     UsageStore.shared.record(
                         sessionId: session.id,

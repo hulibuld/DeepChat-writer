@@ -126,14 +126,14 @@ public struct ImportView: View {
     private var header: some View {
         HStack(alignment: .firstTextBaseline) {
             Text("导入")
-                .font(.system(size: 20, weight: .bold))
+                .font(.system(size: Theme.size(20), weight: .bold))
                 .foregroundStyle(Theme.ink)
             Spacer()
             if store.busy {
                 ProgressView().tint(Theme.dim).scaleEffect(0.75)
             } else {
                 Text("本机解析")
-                    .font(.system(size: 11.5))
+                    .font(.system(size: Theme.size(11.5)))
                     .foregroundStyle(Theme.faint)
             }
         }
@@ -145,16 +145,16 @@ public struct ImportView: View {
     private var introCard: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("从 JSON 导入会话")
-                .font(.system(size: 13, weight: .semibold))
+                .font(.system(size: Theme.size(13), weight: .semibold))
                 .foregroundStyle(Theme.ink)
             Text("认 Android 端导出的会话结构：`sessions` + `messages` 平铺数组，或者 `messages` 嵌在会话对象里。字段名 snake_case / camelCase 都行，时间戳毫秒、秒、ISO 字符串都认。")
-                .font(.system(size: 12.5))
+                .font(.system(size: Theme.size(12.5)))
                 .foregroundStyle(Theme.dim)
             PrimaryButton("选择 JSON 文件") {
                 picking = true
             }
             Text("按会话 id 去重：同一份文件导入第二次会被整批跳过。")
-                .font(.system(size: 11.5))
+                .font(.system(size: Theme.size(11.5)))
                 .foregroundStyle(Theme.faint)
         }
         .padding(16)
@@ -170,14 +170,14 @@ public struct ImportView: View {
                     .font(.system(size: 13))
                     .foregroundStyle(Theme.accent)
                 Text(store.pickedName)
-                    .font(.system(size: 12.5, weight: .medium))
+                    .font(.system(size: Theme.size(12.5), weight: .medium))
                     .foregroundStyle(Theme.ink)
                     .lineLimit(1)
                     .truncationMode(.middle)
             }
 
             Text(summary.format)
-                .font(.system(size: 11.5))
+                .font(.system(size: Theme.size(11.5)))
                 .foregroundStyle(Theme.faint)
 
             HStack(spacing: 0) {
@@ -199,13 +199,13 @@ public struct ImportView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     ForEach(summary.imported.prefix(5)) { session in
                         Text("· \(session.title)（\(session.messages.count) 条）")
-                            .font(.system(size: 11.5))
+                            .font(.system(size: Theme.size(11.5)))
                             .foregroundStyle(Theme.dim)
                             .lineLimit(1)
                     }
                     if summary.imported.count > 5 {
                         Text("… 还有 \(summary.imported.count - 5) 个")
-                            .font(.system(size: 11.5))
+                            .font(.system(size: Theme.size(11.5)))
                             .foregroundStyle(Theme.faint)
                     }
                 }
@@ -233,11 +233,11 @@ public struct ImportView: View {
                     .font(.system(size: 12))
                     .foregroundStyle(Theme.danger)
                 Text("导入失败")
-                    .font(.system(size: 12.5, weight: .semibold))
+                    .font(.system(size: Theme.size(12.5), weight: .semibold))
                     .foregroundStyle(Theme.danger)
             }
             Text(store.errorText)
-                .font(.system(size: 12.5))
+                .font(.system(size: Theme.size(12.5)))
                 .foregroundStyle(Theme.ink)
             GhostButton("重新选择") {
                 store.reset()
@@ -257,7 +257,7 @@ public struct ImportView: View {
                     .font(.system(size: 13))
                     .foregroundStyle(Theme.ok)
                 Text(store.resultText)
-                    .font(.system(size: 12.5))
+                    .font(.system(size: Theme.size(12.5)))
                     .foregroundStyle(Theme.ink)
             }
             PrimaryButton("再导入一份") {
@@ -273,7 +273,7 @@ public struct ImportView: View {
 
     private var hint: some View {
         Text("附件、记忆、角色卡不在这次导入范围内；只搬会话与消息。解析全程在本机，文件不会上传。")
-            .font(.system(size: 11.5))
+            .font(.system(size: Theme.size(11.5)))
             .foregroundStyle(Theme.faint)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -281,10 +281,10 @@ public struct ImportView: View {
     private func stat(_ title: String, _ value: String) -> some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(title)
-                .font(.system(size: 10.5))
+                .font(.system(size: Theme.size(10.5)))
                 .foregroundStyle(Theme.faint)
             Text(value)
-                .font(.system(size: 15, weight: .semibold))
+                .font(.system(size: Theme.size(15), weight: .semibold))
                 .foregroundStyle(Theme.ink)
         }
         .frame(maxWidth: .infinity, alignment: .leading)

@@ -170,11 +170,11 @@ public struct ReadAloudBar: View {
                     .font(.system(size: 13))
                     .foregroundStyle(Theme.accent)
                 Text(title)
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: Theme.size(12), weight: .semibold))
                     .foregroundStyle(Theme.faint)
                 Spacer()
                 Text(status)
-                    .font(.system(size: 11.5))
+                    .font(.system(size: Theme.size(11.5)))
                     .foregroundStyle(controller.isSpeaking ? Theme.ok : Theme.faint)
             }
 
@@ -196,12 +196,12 @@ public struct ReadAloudBar: View {
 
             HStack(spacing: 10) {
                 Text("语速")
-                    .font(.system(size: 11.5))
+                    .font(.system(size: Theme.size(11.5)))
                     .foregroundStyle(Theme.faint)
                 Slider(value: $controller.rate, in: 0.2...0.8, step: 0.05)
                     .tint(Theme.accent)
                 Text(String(format: "×%.2f", controller.rate / AVSpeechUtteranceDefaultSpeechRate))
-                    .font(.system(size: 11.5, design: .monospaced))
+                    .font(.system(size: Theme.size(11.5), design: .monospaced))
                     .foregroundStyle(Theme.dim)
                     .frame(width: 46, alignment: .trailing)
             }

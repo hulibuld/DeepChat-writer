@@ -33,11 +33,11 @@ public struct UsageView: View {
     private var header: some View {
         HStack(alignment: .firstTextBaseline) {
             Text("用量")
-                .font(.system(size: 20, weight: .bold))
+                .font(.system(size: Theme.size(20), weight: .bold))
                 .foregroundStyle(Theme.ink)
             Spacer()
             Text("本机估算")
-                .font(.system(size: 11.5))
+                .font(.system(size: Theme.size(11.5)))
                 .foregroundStyle(Theme.faint)
         }
         .padding(.horizontal, 16)
@@ -48,15 +48,15 @@ public struct UsageView: View {
     private var totalsCard: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("最近 7 天")
-                .font(.system(size: 12, weight: .semibold))
+                .font(.system(size: Theme.size(12), weight: .semibold))
                 .foregroundStyle(Theme.faint)
 
             Text("\(summary.requests) 次请求")
-                .font(.system(size: 26, weight: .bold))
+                .font(.system(size: Theme.size(26), weight: .bold))
                 .foregroundStyle(Theme.ink)
 
             Text("共 \(tokenText(summary.totalTokens)) tokens · 输入 \(tokenText(summary.promptTokens)) · 输出 \(tokenText(summary.completionTokens))")
-                .font(.system(size: 12.5))
+                .font(.system(size: Theme.size(12.5)))
                 .foregroundStyle(Theme.dim)
         }
         .padding(16)
@@ -81,13 +81,13 @@ public struct UsageView: View {
     private var dayList: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("按天")
-                .font(.system(size: 12, weight: .semibold))
+                .font(.system(size: Theme.size(12), weight: .semibold))
                 .foregroundStyle(Theme.faint)
                 .padding(.bottom, 10)
 
             if summary.isEmpty {
                 Text("最近 7 天还没有调用记录。")
-                    .font(.system(size: 13))
+                    .font(.system(size: Theme.size(13)))
                     .foregroundStyle(Theme.faint)
                     .padding(.vertical, 8)
             }
@@ -111,16 +111,16 @@ public struct UsageView: View {
         VStack(alignment: .leading, spacing: 7) {
             HStack(spacing: 8) {
                 Text(dayLabel(day))
-                    .font(.system(size: 13.5, weight: day.requests > 0 ? .medium : .regular))
+                    .font(.system(size: Theme.size(13.5), weight: day.requests > 0 ? .medium : .regular))
                     .foregroundStyle(day.requests > 0 ? Theme.ink : Theme.faint)
                     .frame(width: 58, alignment: .leading)
                 Text("\(day.requests) 次")
-                    .font(.system(size: 12))
+                    .font(.system(size: Theme.size(12)))
                     .foregroundStyle(Theme.dim)
                     .frame(width: 52, alignment: .leading)
                 Spacer(minLength: 6)
                 Text("\(tokenText(day.totalTokens)) tokens")
-                    .font(.system(size: 12, design: .monospaced))
+                    .font(.system(size: Theme.size(12), design: .monospaced))
                     .foregroundStyle(day.totalTokens > 0 ? Theme.ink : Theme.faint)
             }
             bar(fraction: fraction(day))
@@ -151,7 +151,7 @@ public struct UsageView: View {
     private var footer: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("token 是估算值：中文 1 字算 1，英文 4 字符算 1，用来观察趋势，不用于对账。")
-                .font(.system(size: 11.5))
+                .font(.system(size: Theme.size(11.5)))
                 .foregroundStyle(Theme.faint)
             GhostButton("清空用量记录") {
                 store.clear()
@@ -163,10 +163,10 @@ public struct UsageView: View {
     private func stat(_ title: String, _ value: String) -> some View {
         VStack(alignment: .leading, spacing: 3) {
             Text(title)
-                .font(.system(size: 10.5))
+                .font(.system(size: Theme.size(10.5)))
                 .foregroundStyle(Theme.faint)
             Text(value)
-                .font(.system(size: 14, weight: .semibold))
+                .font(.system(size: Theme.size(14), weight: .semibold))
                 .foregroundStyle(Theme.ink)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)

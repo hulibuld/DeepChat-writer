@@ -106,13 +106,13 @@ public struct AttachmentStrip: View {
 
             VStack(alignment: .leading, spacing: 1) {
                 Text(item.fileName)
-                    .font(.system(size: 12, weight: .medium))
+                    .font(.system(size: Theme.size(12), weight: .medium))
                     .foregroundStyle(Theme.ink)
                     .lineLimit(1)
                     .truncationMode(.middle)
                     .frame(maxWidth: 130, alignment: .leading)
                 Text(item.displaySize)
-                    .font(.system(size: 10.5))
+                    .font(.system(size: Theme.size(10.5)))
                     .foregroundStyle(Theme.faint)
             }
 
@@ -191,7 +191,7 @@ public struct AttachmentPicker: View {
                         draft.clear()
                     } label: {
                         Text("清空")
-                            .font(.system(size: 11.5))
+                            .font(.system(size: Theme.size(11.5)))
                             .foregroundStyle(Theme.faint)
                     }
                     .buttonStyle(.plain)
@@ -200,7 +200,7 @@ public struct AttachmentPicker: View {
 
             if !draft.errorText.isEmpty {
                 Text(draft.errorText)
-                    .font(.system(size: 11.5))
+                    .font(.system(size: Theme.size(11.5)))
                     .foregroundStyle(Theme.danger)
                     .lineLimit(2)
             }
@@ -249,7 +249,7 @@ public struct AttachmentPicker: View {
             Image(systemName: icon)
                 .font(.system(size: 12, weight: .medium))
             Text(title)
-                .font(.system(size: 12))
+                .font(.system(size: Theme.size(12)))
         }
         .foregroundStyle(Theme.dim)
         .padding(.horizontal, 10)

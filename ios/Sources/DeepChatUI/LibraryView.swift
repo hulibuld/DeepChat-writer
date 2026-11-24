@@ -11,7 +11,7 @@ public struct LibraryView: View {
         VStack(spacing: 0) {
             HStack {
                 Text("会话")
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: Theme.size(20), weight: .bold))
                     .foregroundStyle(Theme.ink)
                 Spacer()
                 Button {
@@ -34,11 +34,11 @@ public struct LibraryView: View {
                     } label: {
                         VStack(alignment: .leading, spacing: 4) {
                             Text(session.title)
-                                .font(.system(size: 15, weight: index == model.currentIndex ? .semibold : .regular))
+                                .font(.system(size: Theme.size(15), weight: index == model.currentIndex ? .semibold : .regular))
                                 .foregroundStyle(Theme.ink)
                                 .lineLimit(1)
                             Text("\(session.mode.label) · \(session.messages.count) 条 · \(dateText(session.updatedAt))")
-                                .font(.system(size: 11.5))
+                                .font(.system(size: Theme.size(11.5)))
                                 .foregroundStyle(Theme.faint)
                         }
                         .padding(.vertical, 4)
@@ -55,7 +55,7 @@ public struct LibraryView: View {
 
             if !exportMessage.isEmpty {
                 Text(exportMessage)
-                    .font(.system(size: 12))
+                    .font(.system(size: Theme.size(12)))
                     .foregroundStyle(Theme.dim)
                     .padding(.bottom, 8)
             }

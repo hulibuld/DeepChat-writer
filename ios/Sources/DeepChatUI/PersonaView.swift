@@ -46,7 +46,7 @@ public struct PersonaView: View {
     private var header: some View {
         HStack {
             Text("角色卡")
-                .font(.system(size: 20, weight: .bold))
+                .font(.system(size: Theme.size(20), weight: .bold))
                 .foregroundStyle(Theme.ink)
             Spacer()
             Button {
@@ -56,7 +56,7 @@ public struct PersonaView: View {
                     Image(systemName: "plus")
                         .font(.system(size: 13, weight: .semibold))
                     Text("新建")
-                        .font(.system(size: 14, weight: .medium))
+                        .font(.system(size: Theme.size(14), weight: .medium))
                 }
                 .foregroundStyle(Theme.accent)
             }
@@ -73,17 +73,17 @@ public struct PersonaView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Text("我的角色卡")
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: Theme.size(12), weight: .semibold))
                     .foregroundStyle(Theme.faint)
                 Spacer()
                 Text("\(store.cards.count) 张")
-                    .font(.system(size: 11.5))
+                    .font(.system(size: Theme.size(11.5)))
                     .foregroundStyle(Theme.faint)
             }
 
             if store.cards.isEmpty {
                 Text("还没有角色卡。点右上角「新建」从姓名、人设、口头禅、禁忌、开场白开始；选中一张后，它的小节会拼进对话的系统提示词。")
-                    .font(.system(size: 12.5))
+                    .font(.system(size: Theme.size(12.5)))
                     .foregroundStyle(Theme.dim)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.vertical, 6)
@@ -104,15 +104,15 @@ public struct PersonaView: View {
         return HStack(alignment: .top, spacing: 10) {
             VStack(alignment: .leading, spacing: 4) {
                 Text(card.displayName)
-                    .font(.system(size: 15, weight: selected ? .semibold : .regular))
+                    .font(.system(size: Theme.size(15), weight: selected ? .semibold : .regular))
                     .foregroundStyle(Theme.ink)
                     .lineLimit(1)
                 Text("身份：\(card.scene.isEmpty ? "未设置" : card.scene)")
-                    .font(.system(size: 12))
+                    .font(.system(size: Theme.size(12)))
                     .foregroundStyle(Theme.dim)
                     .lineLimit(1)
                 Text("已填小节：\(card.filledSectionCount) / \(PersonaSection.allCases.count)")
-                    .font(.system(size: 11.5))
+                    .font(.system(size: Theme.size(11.5)))
                     .foregroundStyle(Theme.faint)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -132,7 +132,7 @@ public struct PersonaView: View {
                 editing = card
             } label: {
                 Text("›")
-                    .font(.system(size: 18))
+                    .font(.system(size: Theme.size(18)))
                     .foregroundStyle(Theme.faint)
             }
             .buttonStyle(.plain)
@@ -147,13 +147,13 @@ public struct PersonaView: View {
     private var sectionsBlock: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("注入小节")
-                .font(.system(size: 12, weight: .semibold))
+                .font(.system(size: Theme.size(12), weight: .semibold))
                 .foregroundStyle(Theme.faint)
 
             Text(store.selectedCard == nil
                  ? "先在上面选中一张卡；勾选的小节才会拼进提示词。"
                  : "当前卡：\(store.selectedCard?.displayName ?? "")。勾选的小节才会拼进提示词。")
-                .font(.system(size: 11.5))
+                .font(.system(size: Theme.size(11.5)))
                 .foregroundStyle(Theme.faint)
                 .fixedSize(horizontal: false, vertical: true)
 
@@ -180,7 +180,7 @@ public struct PersonaView: View {
                     .font(.system(size: 13))
                     .foregroundStyle(on ? Theme.accent : Theme.faint)
                 Text(section.label)
-                    .font(.system(size: 13))
+                    .font(.system(size: Theme.size(13)))
                     .foregroundStyle(on ? Theme.ink : Theme.dim)
                 Spacer(minLength: 0)
             }
@@ -198,13 +198,13 @@ public struct PersonaView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Text("拼好的系统提示词")
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: Theme.size(12), weight: .semibold))
                     .foregroundStyle(Theme.faint)
                 Spacer()
                 Button(promptVisible ? "收起" : "预览") {
                     promptVisible.toggle()
                 }
-                .font(.system(size: 12.5, weight: .medium))
+                .font(.system(size: Theme.size(12.5), weight: .medium))
                 .foregroundStyle(Theme.accent)
                 .buttonStyle(.plain)
             }
@@ -212,7 +212,7 @@ public struct PersonaView: View {
             if promptVisible {
                 let composed = store.systemPrompt(basedOn: Prompts.system(for: .normal))
                 Text(composed.isEmpty ? "还没选中卡，或勾选的小节全为空。" : composed)
-                    .font(.system(size: 11.5, design: .monospaced))
+                    .font(.system(size: Theme.size(11.5), design: .monospaced))
                     .foregroundStyle(Theme.dim)
                     .textSelection(.enabled)
                     .fixedSize(horizontal: false, vertical: true)
@@ -256,12 +256,12 @@ public struct PersonaEditorView: View {
         VStack(spacing: 0) {
             HStack {
                 Button("取消") { dismiss() }
-                    .font(.system(size: 14))
+                    .font(.system(size: Theme.size(14)))
                     .foregroundStyle(Theme.dim)
                     .buttonStyle(.plain)
                 Spacer()
                 Text(isNew ? "新建角色卡" : "编辑角色卡")
-                    .font(.system(size: 15, weight: .semibold))
+                    .font(.system(size: Theme.size(15), weight: .semibold))
                     .foregroundStyle(Theme.ink)
                 Spacer()
                 Button("保存") {
@@ -271,7 +271,7 @@ public struct PersonaEditorView: View {
                     onSave(draft)
                     dismiss()
                 }
-                .font(.system(size: 14, weight: .semibold))
+                .font(.system(size: Theme.size(14), weight: .semibold))
                 .foregroundStyle(Theme.accent)
                 .buttonStyle(.plain)
             }
@@ -296,7 +296,7 @@ public struct PersonaEditorView: View {
                             dismiss()
                         } label: {
                             Text("删除这张卡")
-                                .font(.system(size: 13.5, weight: .medium))
+                                .font(.system(size: Theme.size(13.5), weight: .medium))
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 12)
                                 .foregroundStyle(Theme.danger)
@@ -316,10 +316,10 @@ public struct PersonaEditorView: View {
     private func line(_ label: String, text: Binding<String>) -> some View {
         VStack(alignment: .leading, spacing: 5) {
             Text(label)
-                .font(.system(size: 11.5))
+                .font(.system(size: Theme.size(11.5)))
                 .foregroundStyle(Theme.faint)
             TextField("例如：沉稳的编辑", text: text)
-                .font(.system(size: 14))
+                .font(.system(size: Theme.size(14)))
                 .foregroundStyle(Theme.ink)
                 .padding(10)
                 .background(Theme.surface2)
@@ -330,19 +330,19 @@ public struct PersonaEditorView: View {
     private func block(_ label: String, text: Binding<String>, hint: String, height: CGFloat) -> some View {
         VStack(alignment: .leading, spacing: 5) {
             Text(label)
-                .font(.system(size: 11.5))
+                .font(.system(size: Theme.size(11.5)))
                 .foregroundStyle(Theme.faint)
             ZStack(alignment: .topLeading) {
                 if text.wrappedValue.isEmpty {
                     Text(hint)
-                        .font(.system(size: 13))
+                        .font(.system(size: Theme.size(13)))
                         .foregroundStyle(Theme.faint)
                         .padding(.horizontal, 13)
                         .padding(.vertical, 12)
                         .allowsHitTesting(false)
                 }
                 TextEditor(text: text)
-                    .font(.system(size: 14))
+                    .font(.system(size: Theme.size(14)))
                     .foregroundColor(Theme.ink)
                     .scrollContentBackground(.hidden)
                     .padding(6)

@@ -220,7 +220,7 @@ public struct ProvidersView: View {
                 VStack(spacing: 14) {
                     if store.providers.isEmpty {
                         Text("还没有通道，先新建一个。")
-                            .font(.system(size: 13))
+                            .font(.system(size: Theme.size(13)))
                             .foregroundStyle(Theme.faint)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
@@ -258,14 +258,14 @@ public struct ProvidersView: View {
     private var header: some View {
         HStack(alignment: .firstTextBaseline) {
             Text("通道")
-                .font(.system(size: 20, weight: .bold))
+                .font(.system(size: Theme.size(20), weight: .bold))
                 .foregroundStyle(Theme.ink)
             Spacer()
             Button {
                 adding = true
             } label: {
                 Text("新建")
-                    .font(.system(size: 13, weight: .medium))
+                    .font(.system(size: Theme.size(13), weight: .medium))
                     .foregroundStyle(Theme.accent)
             }
             .buttonStyle(.plain)
@@ -277,7 +277,7 @@ public struct ProvidersView: View {
 
     private var hint: some View {
         Text("Key 存在系统 Keychain，每个通道一个；界面只显示首尾各 4 位。切换「当前」后，新请求走这个通道的地址与模型。")
-            .font(.system(size: 11.5))
+            .font(.system(size: Theme.size(11.5)))
             .foregroundStyle(Theme.faint)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -329,12 +329,12 @@ private struct ProviderCard: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 8) {
                 Text(name.isEmpty ? provider.name : name)
-                    .font(.system(size: 15, weight: .semibold))
+                    .font(.system(size: Theme.size(15), weight: .semibold))
                     .foregroundStyle(Theme.ink)
                     .lineLimit(1)
                 if isCurrent {
                     Text("当前")
-                        .font(.system(size: 10.5, weight: .semibold))
+                        .font(.system(size: Theme.size(10.5), weight: .semibold))
                         .padding(.horizontal, 7)
                         .padding(.vertical, 2)
                         .background(Theme.accent.opacity(0.18))
@@ -344,7 +344,7 @@ private struct ProviderCard: View {
                 Spacer(minLength: 8)
                 if !isCurrent {
                     Button("设为当前", action: onSelect)
-                        .font(.system(size: 12, weight: .medium))
+                        .font(.system(size: Theme.size(12), weight: .medium))
                         .foregroundStyle(Theme.accent)
                         .buttonStyle(.plain)
                 }
@@ -360,7 +360,7 @@ private struct ProviderCard: View {
                         kind = option
                     } label: {
                         Text(kindLabel(option))
-                            .font(.system(size: 12, weight: .medium))
+                            .font(.system(size: Theme.size(12), weight: .medium))
                             .padding(.horizontal, 10)
                             .padding(.vertical, 5)
                             .background(kind == option ? Theme.accent : Theme.surface2)
@@ -371,7 +371,7 @@ private struct ProviderCard: View {
                 }
                 Spacer()
                 Button("保存") { commit() }
-                    .font(.system(size: 12.5, weight: .semibold))
+                    .font(.system(size: Theme.size(12.5), weight: .semibold))
                     .foregroundStyle(Theme.accent)
                     .buttonStyle(.plain)
             }
@@ -383,27 +383,27 @@ private struct ProviderCard: View {
             VStack(alignment: .leading, spacing: 7) {
                 HStack {
                     Text("API Key")
-                        .font(.system(size: 11.5))
+                        .font(.system(size: Theme.size(11.5)))
                         .foregroundStyle(Theme.faint)
                     Spacer()
                     Text(keyMask)
-                        .font(.system(size: 11.5, design: .monospaced))
+                        .font(.system(size: Theme.size(11.5), design: .monospaced))
                         .foregroundStyle(Theme.dim)
                 }
                 HStack(spacing: 8) {
                     SecureField("粘贴 Key", text: $keyInput)
-                        .font(.system(size: 13))
+                        .font(.system(size: Theme.size(13)))
                         .foregroundStyle(Theme.ink)
                         .padding(9)
                         .background(Theme.surface2)
                         .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
                     Button("存") { saveKey() }
-                        .font(.system(size: 12.5, weight: .semibold))
+                        .font(.system(size: Theme.size(12.5), weight: .semibold))
                         .foregroundStyle(Theme.accent)
                         .buttonStyle(.plain)
                     if ProviderKeychain.hasKey(for: provider.id) {
                         Button("清除") { clearKey() }
-                            .font(.system(size: 12.5, weight: .medium))
+                            .font(.system(size: Theme.size(12.5), weight: .medium))
                             .foregroundStyle(Theme.danger)
                             .buttonStyle(.plain)
                     }
@@ -414,7 +414,7 @@ private struct ProviderCard: View {
                             keyMask = ProviderKeychain.masked(ProviderKeychain.key(for: provider.id))
                         }
                     }
-                    .font(.system(size: 11.5))
+                    .font(.system(size: Theme.size(11.5)))
                     .foregroundStyle(Theme.dim)
                     .buttonStyle(.plain)
                 }
@@ -422,7 +422,7 @@ private struct ProviderCard: View {
 
             if canDelete {
                 Button("删除这个通道", action: onDelete)
-                    .font(.system(size: 12, weight: .medium))
+                    .font(.system(size: Theme.size(12), weight: .medium))
                     .foregroundStyle(Theme.danger)
                     .buttonStyle(.plain)
             }
@@ -474,10 +474,10 @@ private struct ProviderCard: View {
     private func field(_ label: String, text: Binding<String>) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(label)
-                .font(.system(size: 11))
+                .font(.system(size: Theme.size(11)))
                 .foregroundStyle(Theme.faint)
             TextField("", text: text)
-                .font(.system(size: 13.5))
+                .font(.system(size: Theme.size(13.5)))
                 .foregroundStyle(Theme.ink)
                 .autocorrectionDisabled()
                 .padding(9)
@@ -502,7 +502,7 @@ private struct ProviderAddSheet: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             Text("新建通道")
-                .font(.system(size: 17, weight: .bold))
+                .font(.system(size: Theme.size(17), weight: .bold))
                 .foregroundStyle(Theme.ink)
 
             labeled("显示名") {
@@ -539,7 +539,7 @@ private struct ProviderAddSheet: View {
                             }
                         } label: {
                             Text(option == .deepSeek ? "DeepSeek" : "OpenAI 兼容")
-                                .font(.system(size: 12.5, weight: .medium))
+                                .font(.system(size: Theme.size(12.5), weight: .medium))
                                 .padding(.horizontal, 11)
                                 .padding(.vertical, 6)
                                 .background(kind == option ? Theme.accent : Theme.surface2)
@@ -569,7 +569,7 @@ private struct ProviderAddSheet: View {
                                         @ViewBuilder content: () -> Content) -> some View {
         VStack(alignment: .leading, spacing: 5) {
             Text(label)
-                .font(.system(size: 11))
+                .font(.system(size: Theme.size(11)))
                 .foregroundStyle(Theme.faint)
             content()
         }

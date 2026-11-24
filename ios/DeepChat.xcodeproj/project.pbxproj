@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09B8079A6C11F46DE31CD1C9 /* VoiceComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F28BFA183B8D3ECD3ADD48 /* VoiceComposer.swift */; };
 		0B5C2A05801946F1141885A5 /* Prompts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C552AD88980DB1462603C1 /* Prompts.swift */; };
 		10CA05D611E867CA4B947E0C /* Guard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B79781071404E992A8D98A0 /* Guard.swift */; };
 		121D716D0628DF0281BDF85E /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44879336CAAB2253EA122D9 /* DataView.swift */; };
@@ -27,6 +28,7 @@
 		6D20BCB5E0120BB23B1AF68A /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C4C15BE655E9E56035A24A /* License.swift */; };
 		7037225D2A6ECCF3D49FFC42 /* ProvidersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A637A373038A4D1F1E518A1 /* ProvidersView.swift */; };
 		774C0F521A0A73B39163EA45 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F84E6C06318A8B453B60E7 /* Theme.swift */; };
+		7B2F274E9EA9AA6B18BBA40D /* VoiceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB4A3C18F1C270663EFBE63 /* VoiceInput.swift */; };
 		80931562C0C0CE1C5D8EC99B /* AttachmentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F126F4A6D7D0365AE4ABC /* AttachmentPicker.swift */; };
 		873DDB785B74E236779307F5 /* DeepChatUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF84E908FE45C40C9C3A314 /* DeepChatUI.framework */; };
 		8A78F7A67CA563FCF14553D8 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20CB6CFA174E9058145F3E3 /* LibraryView.swift */; };
@@ -104,6 +106,7 @@
 		5246F2814D5D6342A10494D7 /* TavernView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TavernView.swift; sourceTree = "<group>"; };
 		54CE712750ED77D1F21B9C57 /* DeepChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepChatApp.swift; sourceTree = "<group>"; };
 		56C4C15BE655E9E56035A24A /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		57F28BFA183B8D3ECD3ADD48 /* VoiceComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceComposer.swift; sourceTree = "<group>"; };
 		58E71AF660DCF004237E719C /* Importer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
 		5B89A4A535D647B32A610948 /* Worldbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worldbook.swift; sourceTree = "<group>"; };
 		6CF84E908FE45C40C9C3A314 /* DeepChatUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DeepChatUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +125,7 @@
 		DF03D7FEE4D70AF60131F1C9 /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
 		E32ACB02A9F68C634A4559FB /* DeepChatCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DeepChatCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB0526526FEA7F40A1010A0F /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
+		ECB4A3C18F1C270663EFBE63 /* VoiceInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceInput.swift; sourceTree = "<group>"; };
 		ED8925FD9D3E2C26A329BDC3 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		F61140756AB648C4FB529BBA /* ReadAloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadAloud.swift; sourceTree = "<group>"; };
 		FAF474EA4FA6026F7D51D4C7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				D7C552AD88980DB1462603C1 /* Prompts.swift */,
 				DB67568693D04E7078718ACD /* Store.swift */,
 				3C5BCB257C01A30608ACA6D2 /* Usage.swift */,
+				ECB4A3C18F1C270663EFBE63 /* VoiceInput.swift */,
 				5B89A4A535D647B32A610948 /* Worldbook.swift */,
 			);
 			path = DeepChatCore;
@@ -207,6 +212,7 @@
 				D5DD32CB100D9925BBF4BB8A /* TermsView.swift */,
 				24F84E6C06318A8B453B60E7 /* Theme.swift */,
 				D9D669509CFFA37D308488FD /* UsageView.swift */,
+				57F28BFA183B8D3ECD3ADD48 /* VoiceComposer.swift */,
 				3FD22D04A3BFA526985E7EC2 /* WriteView.swift */,
 			);
 			path = DeepChatUI;
@@ -366,6 +372,7 @@
 				F3686DBF99C7CA2A1C78786D /* TermsView.swift in Sources */,
 				774C0F521A0A73B39163EA45 /* Theme.swift in Sources */,
 				E75B798F88AC5B48E91AD044 /* UsageView.swift in Sources */,
+				09B8079A6C11F46DE31CD1C9 /* VoiceComposer.swift in Sources */,
 				DCB08A68E94110E64AFB5D6E /* WriteView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,6 +401,7 @@
 				0B5C2A05801946F1141885A5 /* Prompts.swift in Sources */,
 				652DDFED3641CB9182B8C2AB /* Store.swift in Sources */,
 				312C856484FCDC45DC24BFD4 /* Usage.swift in Sources */,
+				7B2F274E9EA9AA6B18BBA40D /* VoiceInput.swift in Sources */,
 				572487F7691C4F7C71E3181E /* Worldbook.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,12 +432,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.deepchat.hulibuld;
 				PRODUCT_NAME = DeepChat;
 				SDKROOT = iphoneos;
@@ -607,12 +615,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.deepchat.hulibuld;
 				PRODUCT_NAME = DeepChat;
 				SDKROOT = iphoneos;

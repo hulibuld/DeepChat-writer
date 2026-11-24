@@ -93,7 +93,7 @@ public struct TavernView: View {
     private var header: some View {
         HStack {
             Text("酒馆")
-                .font(.system(size: 20, weight: .bold))
+                .font(.system(size: Theme.size(20), weight: .bold))
                 .foregroundStyle(Theme.ink)
             Spacer()
             Button {
@@ -103,7 +103,7 @@ public struct TavernView: View {
                     Image(systemName: "text.append")
                         .font(.system(size: 13, weight: .semibold))
                     Text("场景续写")
-                        .font(.system(size: 14, weight: .medium))
+                        .font(.system(size: Theme.size(14), weight: .medium))
                 }
                 .foregroundStyle(Theme.accent)
             }
@@ -122,14 +122,14 @@ public struct TavernView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Text("角色卡")
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: Theme.size(12), weight: .semibold))
                     .foregroundStyle(Theme.faint)
                 Spacer()
                 Button {
                     editingCard = PersonaCard()
                 } label: {
                     Text("＋ 新建")
-                        .font(.system(size: 12.5, weight: .medium))
+                        .font(.system(size: Theme.size(12.5), weight: .medium))
                         .foregroundStyle(Theme.accent)
                 }
                 .buttonStyle(.plain)
@@ -137,7 +137,7 @@ public struct TavernView: View {
 
             if personas.cards.isEmpty {
                 Text("还没有角色卡。先建一张，写清楚他是谁、怎么说话，酒馆就按这个演。")
-                    .font(.system(size: 12.5))
+                    .font(.system(size: Theme.size(12.5)))
                     .foregroundStyle(Theme.dim)
                     .fixedSize(horizontal: false, vertical: true)
             } else {
@@ -154,17 +154,17 @@ public struct TavernView: View {
             if let card = selectedCard {
                 HStack(spacing: 8) {
                     Text(card.displayName)
-                        .font(.system(size: 14, weight: .semibold))
+                        .font(.system(size: Theme.size(14), weight: .semibold))
                         .foregroundStyle(Theme.ink)
                     Text("已填 \(card.filledSectionCount) 节")
-                        .font(.system(size: 11.5))
+                        .font(.system(size: Theme.size(11.5)))
                         .foregroundStyle(Theme.faint)
                     Spacer()
                     Button {
                         editingCard = card
                     } label: {
                         Text("编辑这张卡")
-                            .font(.system(size: 12.5))
+                            .font(.system(size: Theme.size(12.5)))
                             .foregroundStyle(Theme.accent)
                     }
                     .buttonStyle(.plain)
@@ -185,11 +185,11 @@ public struct TavernView: View {
         } label: {
             VStack(alignment: .leading, spacing: 3) {
                 Text(card.displayName)
-                    .font(.system(size: 13.5, weight: on ? .semibold : .regular))
+                    .font(.system(size: Theme.size(13.5), weight: on ? .semibold : .regular))
                     .foregroundStyle(on ? Theme.accent : Theme.ink)
                     .lineLimit(1)
                 Text(card.scene.isEmpty ? "未设置场景" : card.scene)
-                    .font(.system(size: 10.5))
+                    .font(.system(size: Theme.size(10.5)))
                     .foregroundStyle(Theme.faint)
                     .lineLimit(1)
             }
@@ -211,7 +211,7 @@ public struct TavernView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Text("场景与开场白")
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: Theme.size(12), weight: .semibold))
                     .foregroundStyle(Theme.faint)
                 Spacer()
                 if selectedCard != nil {
@@ -219,7 +219,7 @@ public struct TavernView: View {
                         writeBackToCard()
                     } label: {
                         Text("写回卡片")
-                            .font(.system(size: 12.5, weight: .medium))
+                            .font(.system(size: Theme.size(12.5), weight: .medium))
                             .foregroundStyle(Theme.accent)
                     }
                     .buttonStyle(.plain)
@@ -228,7 +228,7 @@ public struct TavernView: View {
 
             if selectedCard == nil {
                 Text("先选一张角色卡，场景与开场白会从卡上带过来。")
-                    .font(.system(size: 12.5))
+                    .font(.system(size: Theme.size(12.5)))
                     .foregroundStyle(Theme.dim)
             } else {
                 labeledEditor("场景", text: $sceneText, hint: "发生在哪里、此刻的局面", height: 68)
@@ -247,30 +247,30 @@ public struct TavernView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Text("世界书")
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: Theme.size(12), weight: .semibold))
                     .foregroundStyle(Theme.faint)
                 Spacer()
                 Text("命中 \(worldbook.match(in: scanText).count) 条")
-                    .font(.system(size: 11.5))
+                    .font(.system(size: Theme.size(11.5)))
                     .foregroundStyle(Theme.faint)
                 Button {
                     editingEntry = WorldbookEntry(order: (worldbook.entries.map(\.order).max() ?? 0) + 1)
                 } label: {
                     Text("＋ 新增")
-                        .font(.system(size: 12.5, weight: .medium))
+                        .font(.system(size: Theme.size(12.5), weight: .medium))
                         .foregroundStyle(Theme.accent)
                 }
                 .buttonStyle(.plain)
             }
 
             Text("勾选 = 本轮强制注入；不勾的按触发词自动匹配（触发词留空即常驻）。扫最近 \(scanDepth) 行。")
-                .font(.system(size: 11.5))
+                .font(.system(size: Theme.size(11.5)))
                 .foregroundStyle(Theme.faint)
                 .fixedSize(horizontal: false, vertical: true)
 
             if worldbook.entries.isEmpty {
                 Text("还没有条目。加一条「关键词 + 内容」，例如：北平 → 民国十七年的北平，冬天极冷。")
-                    .font(.system(size: 12.5))
+                    .font(.system(size: Theme.size(12.5)))
                     .foregroundStyle(Theme.dim)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -281,7 +281,7 @@ public struct TavernView: View {
 
             HStack(spacing: 8) {
                 Text("扫描行数")
-                    .font(.system(size: 12))
+                    .font(.system(size: Theme.size(12)))
                     .foregroundStyle(Theme.dim)
                 Slider(value: Binding(
                     get: { Double(scanDepth) },
@@ -289,7 +289,7 @@ public struct TavernView: View {
                 ), in: 1...20, step: 1)
                 .tint(Theme.accent)
                 Text("\(scanDepth)")
-                    .font(.system(size: 12))
+                    .font(.system(size: Theme.size(12)))
                     .foregroundStyle(Theme.faint)
                     .frame(width: 22)
             }
@@ -314,12 +314,12 @@ public struct TavernView: View {
 
             VStack(alignment: .leading, spacing: 3) {
                 Text(entry.title)
-                    .font(.system(size: 13.5, weight: .medium))
+                    .font(.system(size: Theme.size(13.5), weight: .medium))
                     .foregroundStyle(entry.enabled ? Theme.ink : Theme.faint)
                     .lineLimit(1)
                 if !entry.content.isEmpty {
                     Text(entry.content)
-                        .font(.system(size: 12))
+                        .font(.system(size: Theme.size(12)))
                         .foregroundStyle(Theme.dim)
                         .lineLimit(2)
                 }
@@ -346,11 +346,11 @@ public struct TavernView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text("最近对话")
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: Theme.size(12), weight: .semibold))
                     .foregroundStyle(Theme.faint)
                 Spacer()
                 Text("\(lineCount) 行")
-                    .font(.system(size: 11.5))
+                    .font(.system(size: Theme.size(11.5)))
                     .foregroundStyle(Theme.faint)
             }
             labeledEditor("", text: $draft, hint: "把上一段贴进来，或写「他说……我……」；世界书按末尾 \(scanDepth) 行匹配", height: 96)
@@ -366,10 +366,10 @@ public struct TavernView: View {
     private var previewSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("拼好的提示词")
-                .font(.system(size: 12, weight: .semibold))
+                .font(.system(size: Theme.size(12), weight: .semibold))
                 .foregroundStyle(Theme.faint)
             Text(preview.isEmpty ? "没有可拼的内容：先选角色卡，或勾一条世界书。" : preview)
-                .font(.system(size: 11.5, design: .monospaced))
+                .font(.system(size: Theme.size(11.5), design: .monospaced))
                 .foregroundStyle(Theme.dim)
                 .textSelection(.enabled)
                 .fixedSize(horizontal: false, vertical: true)
@@ -394,12 +394,12 @@ public struct TavernView: View {
         VStack(spacing: 6) {
             if !notice.isEmpty {
                 Text(notice)
-                    .font(.system(size: 11.5))
+                    .font(.system(size: Theme.size(11.5)))
                     .foregroundStyle(Theme.ok)
             }
             HStack(spacing: 10) {
                 TextField("说一句，或写一个动作…", text: $input)
-                    .font(.system(size: 14))
+                    .font(.system(size: Theme.size(14)))
                     .foregroundStyle(Theme.ink)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 10)
@@ -410,7 +410,7 @@ public struct TavernView: View {
                     startScene()
                 } label: {
                     Text("发起剧情")
-                        .font(.system(size: 14, weight: .semibold))
+                        .font(.system(size: Theme.size(14), weight: .semibold))
                         .padding(.horizontal, 16)
                         .padding(.vertical, 10)
                         .background(input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? Theme.surface2 : Theme.accent)
@@ -537,20 +537,20 @@ public struct TavernView: View {
         VStack(alignment: .leading, spacing: 5) {
             if !label.isEmpty {
                 Text(label)
-                    .font(.system(size: 11.5))
+                    .font(.system(size: Theme.size(11.5)))
                     .foregroundStyle(Theme.faint)
             }
             ZStack(alignment: .topLeading) {
                 if text.wrappedValue.isEmpty {
                     Text(hint)
-                        .font(.system(size: 13))
+                        .font(.system(size: Theme.size(13)))
                         .foregroundStyle(Theme.faint)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 11)
                         .allowsHitTesting(false)
                 }
                 TextEditor(text: text)
-                    .font(.system(size: 14))
+                    .font(.system(size: Theme.size(14)))
                     .foregroundColor(Theme.ink)
                     .scrollContentBackground(.hidden)
                     .padding(6)
@@ -588,12 +588,12 @@ private struct WorldbookEntryEditorView: View {
         VStack(spacing: 0) {
             HStack {
                 Button("取消") { dismiss() }
-                    .font(.system(size: 14))
+                    .font(.system(size: Theme.size(14)))
                     .foregroundStyle(Theme.dim)
                     .buttonStyle(.plain)
                 Spacer()
                 Text(isNew ? "新增世界书条目" : "编辑世界书条目")
-                    .font(.system(size: 15, weight: .semibold))
+                    .font(.system(size: Theme.size(15), weight: .semibold))
                     .foregroundStyle(Theme.ink)
                 Spacer()
                 Button("保存") {
@@ -601,7 +601,7 @@ private struct WorldbookEntryEditorView: View {
                     onSave(draft)
                     dismiss()
                 }
-                .font(.system(size: 14, weight: .semibold))
+                .font(.system(size: Theme.size(14), weight: .semibold))
                 .foregroundStyle(Theme.accent)
                 .buttonStyle(.plain)
             }
@@ -613,10 +613,10 @@ private struct WorldbookEntryEditorView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     VStack(alignment: .leading, spacing: 5) {
                         Text("触发词（逗号分隔，留空即常驻）")
-                            .font(.system(size: 11.5))
+                            .font(.system(size: Theme.size(11.5)))
                             .foregroundStyle(Theme.faint)
                         TextField("北平, 茶馆", text: keysBinding)
-                            .font(.system(size: 14))
+                            .font(.system(size: Theme.size(14)))
                             .foregroundStyle(Theme.ink)
                             .padding(10)
                             .background(Theme.surface2)
@@ -625,19 +625,19 @@ private struct WorldbookEntryEditorView: View {
 
                     VStack(alignment: .leading, spacing: 5) {
                         Text("内容")
-                            .font(.system(size: 11.5))
+                            .font(.system(size: Theme.size(11.5)))
                             .foregroundStyle(Theme.faint)
                         ZStack(alignment: .topLeading) {
                             if draft.content.isEmpty {
                                 Text("这条世界观规矩：地名、势力、规则，一两句说清")
-                                    .font(.system(size: 13))
+                                    .font(.system(size: Theme.size(13)))
                                     .foregroundStyle(Theme.faint)
                                     .padding(.horizontal, 12)
                                     .padding(.vertical, 11)
                                     .allowsHitTesting(false)
                             }
                             TextEditor(text: $draft.content)
-                                .font(.system(size: 14))
+                                .font(.system(size: Theme.size(14)))
                                 .foregroundColor(Theme.ink)
                                 .scrollContentBackground(.hidden)
                                 .padding(6)
@@ -649,14 +649,14 @@ private struct WorldbookEntryEditorView: View {
 
                     Toggle(isOn: $draft.enabled) {
                         Text("启用")
-                            .font(.system(size: 13))
+                            .font(.system(size: Theme.size(13)))
                             .foregroundStyle(Theme.dim)
                     }
                     .tint(Theme.accent)
 
                     Stepper(value: $draft.order, in: 0...99) {
                         Text("注入顺序：\(draft.order)")
-                            .font(.system(size: 13))
+                            .font(.system(size: Theme.size(13)))
                             .foregroundStyle(Theme.dim)
                     }
 
@@ -666,7 +666,7 @@ private struct WorldbookEntryEditorView: View {
                             dismiss()
                         } label: {
                             Text("删除这条")
-                                .font(.system(size: 13.5, weight: .medium))
+                                .font(.system(size: Theme.size(13.5), weight: .medium))
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 12)
                                 .foregroundStyle(Theme.danger)

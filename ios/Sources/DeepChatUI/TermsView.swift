@@ -25,10 +25,10 @@ public struct TermsView: View {
                 VStack(alignment: .leading, spacing: 18) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("使用须知与免责声明")
-                            .font(.system(size: 22, weight: .bold))
+                            .font(.system(size: Theme.size(22), weight: .bold))
                             .foregroundStyle(Theme.ink)
                         Text("下载、安装、激活或使用本项目，即视为你已阅读、理解并同意下列全部内容。不同意其中任何一条，请不要安装或使用。")
-                            .font(.system(size: 12.5))
+                            .font(.system(size: Theme.size(12.5)))
                             .foregroundStyle(Theme.dim)
                         if onAgree == nil {
                             // 设置页以 sheet 打开时给一个明确的关闭入口。
@@ -40,11 +40,11 @@ public struct TermsView: View {
                         Surface {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text(section.title)
-                                    .font(.system(size: 13, weight: .semibold))
+                                    .font(.system(size: Theme.size(13), weight: .semibold))
                                     .foregroundStyle(Theme.ink)
                                 ForEach(section.items, id: \.self) { item in
                                     Text(LocalizedStringKey(item))
-                                        .font(.system(size: 12.5))
+                                        .font(.system(size: Theme.size(12.5)))
                                         .foregroundStyle(Theme.dim)
                                         .fixedSize(horizontal: false, vertical: true)
                                 }
