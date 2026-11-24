@@ -1,27 +1,27 @@
-# 发布说明 · 1.2.10
+# 发布说明 · 1.2.12
 
 当前发布版本信息，下载前请核对文件名与哈希。
 
 | 项目 | 值 |
 |---|---|
-| 版本号 | **1.2.10** |
-| versionCode | 27 |
+| 版本号 | **1.2.12** |
+| versionCode | 29 |
 | 包名 | `com.yanchuan.writer` |
-| APK 文件名 | `deepchat-writer-1.2.10.apk` |
-| 文件大小 | 6,162,471 字节 |
-| SHA-256 | `03a9e488584e78c587130b8f62cd672c5495ff5bdb2d507736d04bf14ba46bb3` |
+| APK 文件名 | `deepchat-writer-1.2.12.apk` |
+| 文件大小 | 6,162,523 字节 |
+| SHA-256 | `765fbbe072ce61e2d044f2c00b6aa7160ca08c30ed716de062685af667474fb6` |
 | 最低系统 | Android 8.0（API 26） |
 
 ## 下载
 
-<https://deepchat-writer.pages.dev/deepchat-writer-1.2.10.apk>
+<https://deepchat-writer.pages.dev/deepchat-writer-1.2.12.apk>
 
 下载后请自行校验哈希（macOS / Linux）：
 
 ```bash
-shasum -a 256 deepchat-writer-1.2.10.apk
+shasum -a 256 deepchat-writer-1.2.12.apk
 # 期望输出
-# 03a9e488584e78c587130b8f62cd672c5495ff5bdb2d507736d04bf14ba46bb3
+# 765fbbe072ce61e2d044f2c00b6aa7160ca08c30ed716de062685af667474fb6
 ```
 
 结果与上表不一致，说明文件在传输过程中被改动或来源不是官方下载地址，请勿安装。
@@ -29,7 +29,7 @@ shasum -a 256 deepchat-writer-1.2.10.apk
 ## 购买与激活
 
 - 兑换码购买：<https://afdian.com/item/c77ca3c2e75211f18cd252540025c377>
-- 抖音：`_I36_567I_5193_`
+- 抖音主页：<https://www.douyin.com/user/MS4wLjABAAAAcxt-iWc4_r1SLaA2lOYCxwkUvbuUJPQWtYqMRlTmrGry1fCiGXh9r7W5HMWy4rsm>
 - 拿到兑换码后在应用内「激活」页输入即可；激活状态离线保存在本机，换机后重新输入同一枚兑换码即可恢复。
 
 ### 收费说明
@@ -38,9 +38,11 @@ shasum -a 256 deepchat-writer-1.2.10.apk
 
 ## 本版要点
 
-- 激活流程稳定性修复，兑换码校验失败时给出明确原因。
-- 应用内会话导入去重、自动导入漏扫的问题修复。
 - 版本信息与下载地址独立成页，便于核对。
+
+## 修复记录
+
+1.2.12 修复：未绑定设备的凭证（d="*"）在重启后 currentClaims() 仍按严格设备比较被判失效，现已统一走 deviceMatches()。
 
 ## 安装提醒
 
