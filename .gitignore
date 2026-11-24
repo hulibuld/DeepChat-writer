@@ -1,0 +1,82 @@
+# 构建产物与中间文件
+.gradle/
+build/
+app/build/
+*/build/
+captures/
+.externalNativeBuild/
+.cxx/
+out/
+
+# 签名与口令 —— 绝不入库
+*.jks
+*.keystore
+keystore.properties
+local.properties
+*.pem
+*.p12
+*.pkcs12
+*.key
+*.crt
+*.der
+
+# 授权私钥与签发材料
+*.yc-key
+*yc-license*
+license-private*
+signing-*
+
+# 兑换码与授权表 —— 绝不入库
+tools/codes*.txt
+tools/codes-*.jsonl
+tools/codes*.jsonl
+codes*.txt
+codes-*.jsonl
+deliverables/兑换码*.md
+deliverables/兑换码*.csv
+deliverables/*兑换码*
+兑换码*.md
+
+# 实测记录与内部交接 —— 绝不入库
+evidence/
+runs/
+归档交接-*.md
+HANDOFF*.md
+incoming/
+fixtures/
+backup-crack*/
+blue-team/
+
+# 本机脚本与工具链
+toolchain/
+ocrbin
+sdk_licenses.log
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+.idea/
+*.iml
+.vscode/
+*.swp
+
+# Python 缓存
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 构建产物包
+*.apk
+*.aab
+*.aar
+*.jks.bak
+*.zip
+dist/*.apk
+
+# 日志与临时文件
+*.log
+*.tmp
+*.bak
+*.orig
+.tmp/
