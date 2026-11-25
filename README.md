@@ -6,11 +6,11 @@ DeepChat是一款面向小说作者与长期连载写作者的写作客户端：
 
 | 平台 | 语言与框架 | 包 | 文档 |
 |---|---|---|---|
-| Android | Kotlin + Jetpack Compose | `DeepChat-Writer-1.4.0.apk` | 本文 |
+| Android | Kotlin + Jetpack Compose | `DeepChat-Writer-1.4.1.apk` | 本文 |
 | iOS | Swift + SwiftUI（无第三方依赖） | `DeepChat-1.3.0-unsigned.ipa` / `-trollstore.ipa`（1.40 MB / 1.44 MB） | [README-iOS.md](README-iOS.md) |
 
 - Android 包名：`com.DeepChat.hulibuld`
-- Android 当前版本：**1.4.0**（versionCode 32）
+- Android 当前版本：**1.4.1**（versionCode 33）
 - Android 最低系统：Android 8.0（API 26）· 目标 Android 14（API 34）
 - iOS Bundle ID：`com.deepchat.hulibuld` · 版本 **1.3.0**（Build 4）· 最低 iOS 16
 
@@ -145,6 +145,7 @@ cd ios
 
 | 版本 | 要点 |
 |---|---|
+| 1.4.1 | 修混淆保留规则：`-keep` 曾用旧包名，R8 可裁剪或改名全部类；已逐项核对 dex |
 | 1.4.0 | 语音输入（系统识别，不上传音频）、字号四档、浅色主题、思考内容自动折叠；应用名改为 DeepChat |
 | iOS 1.3.0 | 语音输入（SFSpeechRecognizer 实时识别，音频不留存）、字号四档、浅色主题、思考内容自动折叠 |
 | iOS 1.2.0 | 包名与 Keychain service 改为 `com.deepchat.hulibuld`；首激活联网登记设备（`/bind`）；新增使用须知页（首次启动拦截 + 设置常驻入口） |
