@@ -8,8 +8,8 @@
 | versionCode | 33 |
 | 包名 | `com.DeepChat.hulibuld` |
 | APK 文件名 | `deepchat-writer-1.4.1.apk` |
-| 文件大小 | 6,244,438 字节 |
-| SHA-256 | `ec6ce2b634b54781f6002cabe65792d02b21cf23db36bf881e6cb6e7a3753a78` |
+| 文件大小 | 6,249,230 字节 |
+| SHA-256 | `7bdb14921090141b7386dde0f8fc09eb4a09b6b761269586ae7d12680f2200d5` |
 | 最低系统 | Android 8.0（API 26） |
 
 上表对应的是 Releases 里 tag 为 `v1.4.1` 的那一份。装之前比对一下，不一致就别装。
@@ -25,7 +25,7 @@
 ```bash
 shasum -a 256 deepchat-writer-1.4.1.apk
 # 期望输出
-# ec6ce2b634b54781f6002cabe65792d02b21cf23db36bf881e6cb6e7a3753a78
+# 7bdb14921090141b7386dde0f8fc09eb4a09b6b761269586ae7d12680f2200d5
 ```
 
 与上表不一致说明文件在传输中被改动或来源不是官方地址，请勿安装。
